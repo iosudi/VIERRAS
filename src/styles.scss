@@ -72,6 +72,10 @@ img {
   font-family: var(--heading-font);
 }
 
+body.ar .headings-font {
+  font-family: var(--ar-body-font);
+}
+
 .transparent-text {
   background: linear-gradient(
     to right,

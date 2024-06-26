@@ -22,8 +22,8 @@ export class FooterComponent {
 
   ngOnInit(): void {
     this.toggleMenu('category');
-    this.renderer.addClass(document.body, this.currentLanguage);
     this.currentLanguage = localStorage.getItem('language') || 'en';
+    this.renderer.addClass(document.body, this.currentLanguage);
   }
 
   toggleMenu(menu: string) {
