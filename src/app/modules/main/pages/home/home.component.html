@@ -1,0 +1,229 @@
+<app-quick-view
+  [ngClass]="{ 'd-flex': isQuickViewVisible, 'd-none': !isQuickViewVisible }"
+></app-quick-view>
+<app-client-nav></app-client-nav>
+
+<div class="container-fluid root">
+  <section data-aos="fade-down" class="hero mt-4 px-5">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of slides">
+        <ng-template carouselSlide>
+          <div class="banner d-flex justify-content-between align-items-end">
+            <div
+              [dir]="'dir' | translate"
+              class="heading px-5 pb-3 w-100 d-flex align-items-center justify-content-between"
+            >
+              <div class="title">
+                <h2 class="mb-3 text-capitalize headings-font fw-bold">
+                  {{ slide.heading }}
+                </h2>
+                <p class="text-capitalize">
+                  {{ slide.description }}
+                </p>
+              </div>
+              <button
+                routerLink="/shop"
+                class="primary-btn text-uppercase fw-bold"
+              >
+                {{ "BUTTONS.SHOP_NOW" | translate }}
+              </button>
+            </div>
+            <div class="image">
+              <img [src]="slide.image" [alt]="slide.alt" />
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </section>
+
+  <section class="features pt-5">
+    <div class="container py-3">
+      <div class="row justify-content-center g-4">
+        <div class="col-md-4 text-center">
+          <div class="icon mb-4">
+            <i
+              class="fa-solid fa-truck-fast d-flex align-items-center justify-content-center mx-auto"
+            ></i>
+          </div>
+          <h4 class="h5 fw-bold title text-uppercase text-center">
+            {{ "FEATURES.DELIVERY_HEADING" | translate }}
+          </h4>
+          <p class="mb-0 text-center">
+            {{ "FEATURES.DELIVERY_DESCRIPTION" | translate }}
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="icon mb-4">
+            <i
+              class="fa-solid fa-headset d-flex align-items-center justify-content-center mx-auto"
+            ></i>
+          </div>
+          <h4 class="h5 fw-bold title text-uppercase text-center">
+            {{ "FEATURES.CUSTOMER_HEADING" | translate }}
+          </h4>
+          <p class="mb-0 text-center">
+            {{ "FEATURES.CUSTOMER_DESCRIPTION" | translate }}
+          </p>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="icon mb-4">
+            <i
+              class="fa-solid fa-wallet d-flex align-items-center justify-content-center mx-auto"
+            ></i>
+          </div>
+          <h4 class="h5 fw-bold title text-uppercase text-center">
+            {{ "FEATURES.MONEY_HEADING" | translate }}
+          </h4>
+          <p class="mb-0 text-center">
+            {{ "FEATURES.MONEY_DESCRIPTION" | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-aos="fade-up" class="products my-5 py-4">
+    <div class="container text-center">
+      <div class="heading text-center mb-4">
+        <h4 class="title mb-0 text-capitalize fw-bold headings-font">
+          {{ "HEADINGS.POPULAR_HEADER" | translate }}
+        </h4>
+        <p class="mb-0">{{ "HEADINGS.POPULAR_PARAGRAPH" | translate }}</p>
+      </div>
+
+      <button
+        class="categoryOption fw-medium"
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+        [class.active]="option === selectedOption"
+      >
+        {{ option }}
+      </button>
+
+      <div class="products-box px-5 mt-5">
+        <div class="row">
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center"
+            *ngFor="let product of filteredProducts.slice(0, 8)"
+          >
+            <div
+              class="product d-flex flex-column gap-4 mb-5"
+              [routerLink]="['/product-details', product.id]"
+            >
+              <div class="image">
+                <i
+                  *ngIf="!wishListProducts.includes($any(product.id))"
+                  role="button"
+                  class="fa-regular fa-heart"
+                  (click)="addToWishlist($event, product.id)"
+                ></i>
+                <i
+                  *ngIf="wishListProducts.includes($any(product.id))"
+                  role="button"
+                  class="fa-solid fa-heart"
+                  (click)="removeFromWishlist($event, product.id)"
+                ></i>
+
+                <img [src]="product.imageCover" alt="product" />
+                <div
+                  class="button-overlay d-flex justify-content-center align-items-center gap-2 px-2"
+                >
+                  <button
+                    class="primary-btn px-3"
+                    (click)="addToCart($event, product.id)"
+                  >
+                    Add to Cart <i class="fa-solid fa-shopping-cart mx-1"></i>
+                  </button>
+
+                  <button
+                    class="primary-btn px-2 view-btn"
+                    (click)="openQuickView($event, product)"
+                  >
+                    <i class="fa-solid fa-eye mx-1"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-text d-flex flex-column gap-1">
+                <p class="mb-0 fw-medium text-capitalize">
+                  from {{ product.brand.name }}
+                </p>
+                <h6 class="mb-0">{{ product.title }}</h6>
+                <div class="rating">
+                  <i
+                    [ngClass]="{
+                      'rating-color': product.ratingsAverage >= num,
+                      'fa-regular': product.ratingsAverage < num,
+                      'fa-solid': product.ratingsAverage >= num
+                    }"
+                    *ngFor="let num of [1, 2, 3, 4, 5]"
+                    class="fa-star"
+                  >
+                  </i>
+                </div>
+                <div class="price fw-medium">
+                  {{ product.price | currency : "E£" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="show-more primary-btn mx-auto mt-2">
+          {{ "BUTTONS.SHOW_MORE" | translate }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section data-aos="zoom-in" class="big-banner">
+    <div class="container d-flex align-items-center justify-content-end px-5">
+      <div class="heading mx-5 text-center">
+        <h3 class="mb-3 text-uppercase fw-light">
+          {{ "SLIDES.BANNER_HEADING" | translate }}
+        </h3>
+        <p class="mb-0 text-uppercase fw-medium">
+          {{ "SLIDES.BANNER_PARAGRAPH" | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories my-5 px-5">
+    <div class="container">
+      <div data-aos="fade-down" class="heading text-center mb-5">
+        <h4 class="title mb-0 text-capitalize headings-font fw-bold">
+          {{ "HEADINGS.CATEGORY_HEADER" | translate }}
+        </h4>
+        <p class="mb-0">{{ "HEADINGS.CATEGORY_PARAGRAPH" | translate }}</p>
+      </div>
+      <div class="row justify-content-between g-3">
+        <div
+          class="col-md-4"
+          *ngFor="let category of selectedCategories; let i = index"
+        >
+          <div
+            data-aos="zoom-in"
+            class="category d-flex flex-column align-items-center gap-3"
+          >
+            <div class="image">
+              <img [src]="categoriesCovers[i].image" [alt]="category.slug" />
+            </div>
+            <div class="category-text">
+              <h6 class="fw-bold">{{ category.name }}</h6>
+              <button
+                [routerLink]="['/shop/categories', category._id]"
+                routerLinkActive="router-link-active"
+                class="primary-btn text-capitalize fw-bold"
+              >
+                {{ "BUTTONS.SEE_DETAILS" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,23 @@
+<main class="d-flex justify-content-center align-items-center">
+  <i
+    class="fa-solid fa-arrow-left backBTN"
+    routerLink="/auth/forgot-password"
+  ></i>
+  <div class="content text-center mx-3">
+    <i class="fa-solid fa-shield-halved mb-4"></i>
+    <h1 class="h2 mb-2 fw-bolder">OTP Verification</h1>
+    <p>
+      Please enter the 6 digit OTP sent to <br />
+      {{ currentEmail }} to proceed.
+    </p>
+    <div
+      class="otp mx-auto text-center d-flex flex-column justify-content-center align-items-center mb-4"
+    >
+      <p-inputOtp [(ngModel)]="otpValue" [length]="6" />
+      <p *ngIf="errMsg" class="text-danger mb-0 mt-2 h6">{{ errMsg }}</p>
+    </div>
+    <button type="submit" class="primary-btn fw-bold" (click)="submitOTP()">
+      Reset password
+    </button>
+  </div>
+</main>

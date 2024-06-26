@@ -1,0 +1,93 @@
+<app-client-nav></app-client-nav>
+<main class="px-5 m-5">
+  <h1 class="text-capitalize mb-4 fw-bolder">My orders</h1>
+  <div class="orders">
+    <div class="row g-4">
+      <div class="col-lg-6" *ngFor="let order of userOrdersInfo">
+        <div class="order border rounded-4 py-4 px-3">
+          <div
+            class="order-info d-flex justify-content-between align-items-center gap-3 mb-4"
+          >
+            <div class="order-id">
+              <h4 class="h6 mb-1">Order ID</h4>
+              <p class="mb-0 fw-bold h5">#{{ order.id }}</p>
+            </div>
+
+            <div class="chips d-flex align-items-center flex-wrap gap-2">
+              <p
+                class="chip mb-0 fw-medium text-capitalize paid"
+                *ngIf="order.isPaid"
+              >
+                Paid
+              </p>
+              <p
+                class="chip mb-0 fw-medium text-capitalize not_paid"
+                *ngIf="!order.isPaid"
+              >
+                Not Paid
+              </p>
+              <p
+                class="chip mb-0 fw-medium text-capitalize Delivered"
+                *ngIf="order.isDelivered"
+              >
+                Delivered
+              </p>
+              <p
+                class="chip mb-0 fw-medium text-capitalize notDelivered"
+                *ngIf="!order.isDelivered"
+              >
+                Not Delivered
+              </p>
+              <p
+                class="chip mb-0 fw-medium text-capitalize cash"
+                *ngIf="order.paymentMethodType == 'cash'"
+              >
+                Cash Payment
+              </p>
+              <p
+                class="chip mb-0 fw-medium text-capitalize Card"
+                *ngIf="order.paymentMethodType == 'card'"
+              >
+                Card Payment
+              </p>
+            </div>
+          </div>
+
+          <div class="order-products border rounded-4 p-3 mb-4">
+            <div class="row g-3">
+              <div class="col-xl-6" *ngFor="let item of order.cartItems">
+                <div class="product d-flex align-items-center gap-3">
+                  <div class="image">
+                    <img [src]="item.product.imageCover" alt="product image" />
+                  </div>
+                  <div class="info">
+                    <h4 class="text-capitalize mb-1 h6 fw-bolder">
+                      {{ item.product.title }}
+                    </h4>
+                    <p class="text-capitalize mb-0 fw-medium">
+                      {{ item.product.category.name }}
+                    </p>
+                    <p class="text-capitalize mb-0 fw-semibold">
+                      {{ item.price | currency : "E£"
+                      }}<span>x{{ item.count }}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-details d-flex justify-content-between">
+            <p class="price mb-0 fw-semibold h5">
+              {{ order.totalOrderPrice | currency : "E£" }}
+            </p>
+            <p class="count mb-0 fw-semibold">
+              ( {{ order.cartItems.length }} ) items
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

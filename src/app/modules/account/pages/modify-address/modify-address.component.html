@@ -1,0 +1,32 @@
+<main>
+  <div class="row">
+    <div class="col-12">
+      <div
+        data-aos="fade-left"
+        class="address d-flex justify-content-between align-items-center mb-4 border rounded-4 p-3"
+        *ngFor="let address of userAddresses"
+      >
+        <div class="address__details">
+          <h6><span class="fw-bold">Full name : </span>{{ address.name }}</h6>
+          <h6><span class="fw-bold">Address : </span> {{ address.details }}</h6>
+          <h6><span class="fw-bold">City : </span> {{ address.city }}</h6>
+          <h6>
+            <span class="fw-bold">Phone number : </span> {{ address.phone }}
+          </h6>
+        </div>
+
+        <div class="address_controls d-flex gap-3 align-items-center">
+          <button
+            class="btn btn-danger text-capitalize fw-bold"
+            (click)="deleteAddress(address._id)"
+          >
+            delete address
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="primary-btn fw-bold" routerLink="/account/add-address">
+    <i class="fa-solid fa-plus"></i> Add address
+  </button>
+</main>

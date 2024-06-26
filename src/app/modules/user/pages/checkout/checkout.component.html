@@ -1,0 +1,199 @@
+<app-client-nav></app-client-nav>
+<div class="checkout__box mt-5">
+  <div class="container">
+    <div class="bread_crumb px-md-4 px-sm-0 py-3">
+      <app-bread-crumb></app-bread-crumb>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-8">
+        <div class="billing__box px-5">
+          <h3 class="text-capitalize mb-0 fw-bolder headings-font">
+            billing details
+          </h3>
+
+          <form
+            class="form d-flex flex-column gap-3 my-5"
+            [formGroup]="billingAddress"
+          >
+            <div class="full__name d-flex gap-4">
+              <div class="input-group d-flex flex-column d-flex flex-column">
+                <label>First Name</label>
+                <input type="text" class="w-100" placeholder="John" />
+              </div>
+              <div class="input-group d-flex flex-column">
+                <label>Last Name</label>
+                <input type="text" class="w-100" placeholder="Doe" />
+              </div>
+            </div>
+
+            <div class="input-group d-flex flex-column">
+              <label>Address *</label>
+              <input
+                type="text"
+                class="w-100"
+                placeholder="Your address"
+                formControlName="details"
+              />
+              <div
+                class="alerts"
+                *ngIf="
+                  billingAddress.get('details')?.errors &&
+                  billingAddress.get('details')?.touched
+                "
+              >
+                <p
+                  class="mb-0 px-2 text-danger"
+                  *ngIf="billingAddress.get('details')?.getError('required')"
+                >
+                  Address is required
+                </p>
+              </div>
+            </div>
+
+            <div class="city__details d-flex gap-4">
+              <div class="input-group d-flex flex-column">
+                <label>City *</label>
+                <input
+                  type="text"
+                  class="w-100"
+                  placeholder="City name (e.g, Giza, Cairo)"
+                  formControlName="city"
+                />
+                <div
+                  class="alerts"
+                  *ngIf="
+                    billingAddress.get('city')?.errors &&
+                    billingAddress.get('city')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="billingAddress.get('city')?.getError('required')"
+                  >
+                    City is required
+                  </p>
+                </div>
+              </div>
+              <div class="input-group d-flex flex-column">
+                <label>Governorate</label>
+                <select class="w-100">
+                  <option
+                    *ngFor="let governorate of governorates"
+                    [value]="governorate"
+                  >
+                    {{ governorate }}
+                  </option>
+                </select>
+              </div>
+              <div class="input-group d-flex flex-column">
+                <label>Postal code</label>
+                <input
+                  type="text"
+                  class="w-100"
+                  placeholder="Postal code (optional)"
+                />
+              </div>
+            </div>
+
+            <div class="input-group d-flex flex-column">
+              <label>Phone number *</label>
+              <input
+                type="text"
+                class="w-100"
+                placeholder="e.g 01122334455"
+                formControlName="phone"
+              />
+              <div
+                class="alerts"
+                *ngIf="
+                  billingAddress.get('phone')?.errors &&
+                  billingAddress.get('phone')?.touched
+                "
+              >
+                <p
+                  class="mb-0 px-2 text-danger"
+                  *ngIf="billingAddress.get('phone')?.getError('required')"
+                >
+                  Phone number is required
+                </p>
+                <p
+                  class="mb-0 px-2 text-danger"
+                  *ngIf="billingAddress.get('phone')?.getError('pattern')"
+                >
+                  Phone number must be Egyptian, e.g 01123456789
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="order__summary p-3">
+          <h4 class="text-capitalize mb-0 border-bottom pb-4 fw-bolder h5">
+            your order
+          </h4>
+          <div class="order__details">
+            <div class="order__products">
+              <div
+                class="order__product d-flex justify-content-between align-items-center gap-3 py-4 border-bottom"
+                *ngFor="let product of cartItems"
+              >
+                <div class="product__image">
+                  <img
+                    [src]="product.product.imageCover"
+                    alt="image"
+                    [title]="product.product.title"
+                  />
+                </div>
+                <div class="product__details d-flex flex-column gap-2">
+                  <h4 class="fw-bold mb-0 h6">
+                    {{ product.product.title }}
+                  </h4>
+                  <div class="product__price">
+                    <p class="mb-0">
+                      {{ product.price | currency : "E£" }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="order_total my-3">
+              <div class="subTotal d-flex justify-content-between mb-2">
+                <h4 class="fw-semibold h6">Subtotal</h4>
+                <h4 class="fw-semibold h6">
+                  {{ cartPrice | currency : "E£" }}
+                </h4>
+              </div>
+              <div class="delivery-tax d-flex justify-content-between mb-2">
+                <h4 class="fw-semibold h6 text-capitalize">
+                  Estimated delivery
+                </h4>
+                <h4 class="fw-semibold h6">Free</h4>
+              </div>
+              <div
+                class="taxes d-flex justify-content-between mb-2 border-bottom"
+              >
+                <h4 class="fw-semibold h6 text-capitalize">Estimated taxes</h4>
+                <h4 class="fw-semibold h6">{{ 50 | currency : "E£" }}</h4>
+              </div>
+              <div class="total-price d-flex justify-content-between my-4">
+                <h4 class="fw-bold text-capitalize">Total</h4>
+                <h4 class="fw-bold">{{ cartPrice + 50 | currency : "E£" }}</h4>
+              </div>
+              <button
+                type="submit"
+                class="primary-btn w-100 fw-bold"
+                (click)="checkout()"
+              >
+                Checkout Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

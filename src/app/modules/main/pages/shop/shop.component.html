@@ -1,0 +1,180 @@
+<app-quick-view
+  [ngClass]="{ 'd-flex': isQuickViewVisible, 'd-none': !isQuickViewVisible }"
+></app-quick-view>
+
+<div class="container-fluid root">
+  <div class="row">
+    <div class="col-md-2 px-0">
+      <nav class="side-nav">
+        <div class="logo mb-2">
+          <h1 class="text-uppercase fw-bolder headings-font text-center fs-1">
+            vierras
+          </h1>
+        </div>
+
+        <div class="categories mx-4 py-4">
+          <h4 class="h5 title fw-bold mb-4">Categories</h4>
+          <ul class="m-0">
+            <li
+              role="button"
+              class="mb-2 fw-medium"
+              [routerLink]="['/shop/categories/', category._id]"
+              *ngFor="let category of categories"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="col-md-10 px-0">
+      <div class="main">
+        <app-shop-nav></app-shop-nav>
+
+        <div class="filters px-4 py-4">
+          <div class="filter categories p-3">
+            <h4
+              class="h5 title fw-bold d-flex justify-content-between"
+              (click)="toggleFilter('categories')"
+            >
+              Categories
+              <i
+                class="fa-solid fa-chevron-down"
+                [ngClass]="{
+                'fa-chevron-down':!CategoryFilters,
+                'fa-chevron-up': CategoryFilters,
+              }"
+              ></i>
+            </h4>
+            <ul class="m-0" [class.expanded]="CategoryFilters">
+              <li
+                role="button"
+                class="mb-2 fw-semibold"
+                [routerLink]="['/shop/categories/', category._id]"
+                *ngFor="let category of categories"
+              >
+                {{ category.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <app-bread-crumb></app-bread-crumb>
+
+        <div
+          class="header d-flex align-items-center justify-content-between px-5 mb-4"
+        >
+          <h2 class="h1 title fw-bolder mb-0">Shop</h2>
+          <div class="sort">
+            <h3 class="h6 mb-2">Sort by :</h3>
+            <select class="form-control">
+              <option value="popular">Most popular</option>
+              <option value="highest">Highest price</option>
+              <option value="lowest">Lowest price</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products px-5">
+          <div class="row g-4">
+            <div
+              class="col-xl-3 col-lg-4 col-md-6"
+              *ngFor="
+                let product of products
+                  | paginate
+                    : {
+                        id: 'product-paginator',
+                        itemsPerPage: pageSize,
+                        currentPage: currentPaginationPage,
+                        totalItems: total
+                      }
+              "
+            >
+              <div
+                class="product"
+                [routerLink]="['/product-details', product.id]"
+              >
+                <div class="image position-relative">
+                  <i
+                    *ngIf="!wishListProducts.includes($any(product.id))"
+                    role="button"
+                    class="fa-regular fa-heart"
+                    (click)="addToWishlist($event, product.id)"
+                  ></i>
+                  <i
+                    *ngIf="wishListProducts.includes($any(product.id))"
+                    role="button"
+                    class="fa-solid fa-heart"
+                    (click)="removeFromWishlist($event, product.id)"
+                  ></i>
+
+                  <img
+                    [src]="product.imageCover"
+                    [alt]="product.imageCover"
+                    [title]="product.title"
+                  />
+                  <button
+                    class="primary-btn"
+                    (click)="openQuickView($event, product)"
+                  >
+                    Quick View
+                  </button>
+                </div>
+                <div
+                  class="product-details d-flex justify-content-between align-items-center gap-3 px-3 py-4"
+                >
+                  <div class="product-text">
+                    <p class="mb-2 fw-medium text-capitalize">
+                      from {{ product.brand.name }}
+                    </p>
+                    <h6 class="mb-0 fw-semibold">{{ product.title }}</h6>
+                    <div class="rating">
+                      <i
+                        [ngClass]="{
+                          'rating-color': product.ratingsAverage >= num,
+                          'fa-regular': product.ratingsAverage < num,
+                          'fa-solid': product.ratingsAverage >= num
+                        }"
+                        *ngFor="let num of [1, 2, 3, 4, 5]"
+                        class="fa-star"
+                      >
+                      </i>
+                    </div>
+                    <div class="price fw-medium">
+                      {{ product.price | currency : "E£" }}
+                    </div>
+                  </div>
+                  <button
+                    class="primary-btn"
+                    (click)="addToCart($event, product.id)"
+                  >
+                    <i class="fa-solid fa-shopping-cart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-content-center align-items-center my-5">
+            <pagination-controls
+              id="product-paginator"
+              (pageChange)="pageChanged($event)"
+              (pageBoundsCorrection)="pageChanged($event)"
+              [maxSize]="5"
+              [directionLinks]="true"
+              [autoHide]="true"
+              [responsive]="true"
+              previousLabel="Previous"
+              nextLabel="Next"
+              screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page"
+              screenReaderCurrentLabel="You're on page"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

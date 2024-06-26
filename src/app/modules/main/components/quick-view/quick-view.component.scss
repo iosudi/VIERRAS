@@ -1,0 +1,167 @@
+:host {
+  background-color: rgba(0, 0, 0, 0.164);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.popup {
+  position: relative;
+  width: 70%;
+  background: var(--secondary-color);
+  border-radius: 20px;
+  overflow-x: hidden;
+  max-height: 90vh;
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+
+  .image {
+    margin-right: 10px;
+    height: 610px;
+  }
+
+  .content {
+    padding-right: 40px;
+
+    .heading {
+      p {
+        color: var(--paragraph-color);
+        font-weight: 500;
+      }
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--brand-color);
+    }
+
+    .description {
+      line-height: 25px;
+      letter-spacing: 1px;
+      color: var(--paragraph-color);
+      font-weight: 600;
+    }
+
+    .controls {
+      input {
+        width: 60px;
+        font-weight: 700;
+      }
+      .wishlist-btn {
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        outline: none;
+        border: 0;
+        border: 1px solid var(--border-color);
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+
+    .social-links {
+      i {
+        font-size: 20px;
+        color: var(--paragraph-color);
+        cursor: pointer;
+      }
+    }
+
+    .details {
+      p {
+        color: var(--paragraph-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .popup {
+    width: 80%;
+
+    .image {
+      margin-right: 10px;
+      height: 510px;
+      width: 100%;
+    }
+
+    .content {
+      padding: 10px 20px;
+
+      .price {
+        font-size: 30px;
+      }
+
+      .description {
+        line-height: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 543px) {
+  .popup {
+    width: 95%;
+
+    .image {
+      margin-right: 10px;
+      height: 410px;
+    }
+
+    .content {
+      padding: 10px 10px;
+
+      .heading {
+        h2 {
+          font-size: 20px;
+        }
+      }
+
+      .price {
+        font-size: 20px;
+      }
+
+      .description {
+        font-size: 13px;
+        line-height: 20px;
+      }
+
+      .controls {
+        input {
+          width: 50px;
+        }
+
+        .primary-btn {
+          padding: 10px 5px;
+        }
+      }
+
+      .details {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

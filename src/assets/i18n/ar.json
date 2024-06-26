@@ -1,0 +1,83 @@
+{
+  "dir": "rtl",
+
+  "navItems": {
+    "HOME": "الصفحة الرئيسية",
+    "SHOP": "المتجر",
+    "CATEGORIES": "الفئات",
+    "BLOG": "المدونه",
+    "CONTACT": "تواصل معنا",
+    "CART": "السلة"
+  },
+
+  "FOOTER": {
+    "NEWSLETTER": {
+      "PARAGRAPH": "احصل على تحديث النشرة الإخبارية للمنتج القادم وأفضل الخصومات لجميع العناصر"
+    },
+    "CATEGORY_HEADING": "الفئات",
+    "CATEGORY_ITEMS": {
+      "MEN": "الرجال",
+      "WOMEN": "النساء",
+      "KIDS": "الأطفال",
+      "SKINCARE": "العناية بالبشرة",
+      "ELECTRONICS": "الإلكترونيات"
+    },
+    "ACCOUNT_HEADING": "الحساب",
+    "ACCOUNT_ITEMS": {
+      "MY_ACCOUNT": "حسابي",
+      "LOGIN_REGISTER": "تسجيل الدخول / التسجيل",
+      "CART": "عربة التسوق",
+      "WISHLIST": "قائمة الرغبات",
+      "SHOP": "المتجر"
+    },
+    "SOCIAL_MEDIA_HEADING": "وسائل التواصل الخاصة بنا",
+    "SOCIAL_MEDIA_ITEMS": {
+      "INSTAGRAM": "إنستغرام",
+      "FACEBOOK": "فيسبوك",
+      "YOUTUBE": "يوتيوب",
+      "TWITTER": "تويتر"
+    }
+  },
+
+  "SLIDES": {
+    "MEN_FASHION_HEADING": "مجموعة أزياء فييراس للرجال",
+    "MEN_FASHION_DESCRIPTION": "اكتشف مجموعة أزياء فييراس للرجال. ملابس أنيقة مصممة لتعزيز أسلوبك بلمسات من الرقي والحداثة.",
+    "ELECTRONICS_HEADING": "إلكترونيات فييراس",
+    "ELECTRONICS_DESCRIPTION": "تجربة إلكترونيات فييراس. أحدث الأجهزة والأدوات عالية الأداء مصممة لتعزيز حياتك بالابتكار والوظائف المتقدمة.",
+    "PERFUME_HEADING": "مجموعة عطور فييراس",
+    "PERFUME_DESCRIPTION": "استمتع بمجموعة عطور فييراس. عطور فاخرة مصممة لتأسر حواسك وتترك انطباعًا دائمًا.",
+    "WOMEN_FASHION_HEADING": "مجموعة أزياء فييراس للنساء",
+    "WOMEN_FASHION_DESCRIPTION": "اكتشف مجموعة أزياء فييراس للنساء. ملابس أنيقة مصممة لتعزيز أسلوبك وأناقتك لكل مناسبة.",
+    "SKINCARE_HEADING": "مجموعة العناية بالبشرة من فييراس",
+    "SKINCARE_DESCRIPTION": "اكتشف مجموعة العناية بالبشرة من فييراس. منتجات ممتازة مصممة لتغذية وتجديد بشرتك للحصول على توهج صحي ومشرق.",
+    "BANNER_HEADING": "اكتشف مستحضرات التجميل لدينا",
+    "BANNER_PARAGRAPH": "اضغط هنا لمعرفة ما الذي يجعل مستحضرات التجميل الخاصة بنا مميزة"
+  },
+
+  "FEATURES": {
+    "DELIVERY_HEADING": "توصيل سريع ومجاني",
+    "DELIVERY_DESCRIPTION": "توصيل مجاني لجميع الطلبات التي تزيد عن 140 دولارًا",
+    "CUSTOMER_HEADING": "خدمة العملاء على مدار الساعة",
+    "CUSTOMER_DESCRIPTION": "دعم العملاء الودود على مدار الساعة",
+    "MONEY_HEADING": "ضمان استعادة الأموال",
+    "MONEY_DESCRIPTION": "نقوم بإعادة الأموال خلال 30 يومًا"
+  },
+
+  "HEADINGS": {
+    "POPULAR_HEADER": "المنتجات الرائجه",
+    "POPULAR_PARAGRAPH": "كلام اي كلام بحب السيف العمر",
+    "CATEGORY_HEADER": "افضل الفئات المقرحه لك",
+    "CATEGORY_PARAGRAPH": "كلام هنا المفروض يبقا كلام بس مفيش كلام."
+  },
+
+  "BUTTONS": {
+    "SHOP_NOW": "اشتري الان",
+    "SHOW_MORE": "المزيد",
+    "SEE_DETAILS": "التفاصيل",
+    "SUBSCRIBE": "اشتراك"
+  },
+
+  "PLACEHOLDERS": {
+    "UR_EMAIL": "البريد الالكتروني"
+  }
+}

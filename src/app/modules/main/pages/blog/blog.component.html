@@ -1,0 +1,38 @@
+<app-client-nav></app-client-nav>
+<main>
+  <div class="container-fluid">
+    <div class="hero" data-aos="fade-down">
+      <div class="container">
+        <h1 class="fw-bolder text-center mb-4">Our News</h1>
+        <p class="fw-medium text-center mb-5">
+          Welcome to the VIERRAS Blog: Your Ultimate Source for eCommerce
+          Insights and Trends
+        </p>
+
+        <div class="blog_banner">
+          <img [src]="blogBanner.image" alt="image" class="mb-4 rounded-3" />
+          <h2 class="h3 fw-semibold">{{ blogBanner.title }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts container">
+      <div class="post border-top pt-4 pb-5" *ngFor="let post of posts">
+        <div class="row" data-aos="fade-left">
+          <div class="col-lg-2">
+            <div class="image">
+              <img [src]="post.image" alt="image" class="rounded-3" />
+            </div>
+          </div>
+          <div class="col-lg-10">
+            <div class="post_content pt-3">
+              <h4 class="h3 fw-bolder fs-1">{{ post.title }}</h4>
+              <h5 class="w-75">{{ post.description }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

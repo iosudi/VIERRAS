@@ -1,0 +1,113 @@
+<main data-aos="fade-down" data-aos-offset="40">
+  <h2 class="h5 fw-bolder mb-4">Account information</h2>
+
+  <form class="form" [formGroup]="accountData" (ngSubmit)="onSubmit()">
+    <div class="inputs mb-3">
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="name"
+            class="w-100"
+            type="text"
+            placeholder="Full name"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            accountData.get('name')?.errors && accountData.get('name')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('name')?.getError('required')"
+          >
+            Your name is required
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('name')?.getError('minlength')"
+          >
+            Name must be at least 3 characters.
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('name')?.getError('pattern')"
+          >
+            Name can not contain special characters.
+          </p>
+        </div>
+      </div>
+
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="email"
+            class="w-100"
+            type="email"
+            placeholder="john@example.com"
+          />
+        </div>
+        <p class="mb-0 px-2 text-danger" *ngIf="errMsg">
+          {{ errMsg }}
+        </p>
+        <div
+          class="alerts"
+          *ngIf="
+            accountData.get('email')?.errors &&
+            accountData.get('email')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('email')?.getError('required')"
+          >
+            Email address is required
+          </p>
+
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('email')?.getError('email')"
+          >
+            email is invalid, e.g johndoe@example.com
+          </p>
+        </div>
+      </div>
+
+      <div class="inputGroup">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="phone"
+            class="w-100"
+            type="text"
+            placeholder="Your phone number"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            accountData.get('phone')?.errors &&
+            accountData.get('phone')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('phone')?.getError('required')"
+          >
+            Phone number is required
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="accountData.get('phone')?.getError('pattern')"
+          >
+            Phone number must be Egyptian, e.g 01123456789
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="primary-btn fw-bold fs-6">
+      Apply Changes
+    </button>
+  </form>
+</main>

@@ -1,0 +1,44 @@
+<app-shop-phone-nav></app-shop-phone-nav>
+
+<nav class="p-5 py-md-4 px-md-2 mb-4">
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center"
+  >
+    <div class="form p-3 d-flex align-items-center gap-3">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search among 100+ products" />
+    </div>
+
+    <div class="controls d-flex align-items-center gap-4">
+      <div role="button" class="nav-btn language-btn p-3">
+        ENG <i class="fa-solid fa-globe"></i>
+      </div>
+
+      <div
+        routerLink="/wishlist"
+        role="button"
+        class="nav-btn wishlist-btn user-control p-3"
+      >
+        Wishlist
+        <i class="fa-regular fa-heart" pBadge [value]="wishlistItems"></i>
+      </div>
+
+      <div
+        routerLink="/cart"
+        role="button"
+        class="nav-btn cart-btn user-control p-3"
+      >
+        Your Cart
+        <i class="fa-solid fa-cart-shopping" pBadge [value]="cartItems"></i>
+      </div>
+
+      <div
+        role="button"
+        class="nav-btn user-profile d-flex justify-content-center align-items-center"
+        routerLink="/account"
+      >
+        <i class="fa-regular fa-user"></i>
+      </div>
+    </div>
+  </div>
+</nav>

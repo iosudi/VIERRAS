@@ -1,0 +1,267 @@
+<div class="root">
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="col-xl-7 register-panel d-flex align-items-center justify-content-center position-relative"
+      >
+        <div
+          class="logo d-flex justify-content-between align-items-center w-100 p-4"
+        >
+          <h1 class="mb-0 fw-bolder headings-font">VIERRAS</h1>
+          <a routerLink="/auth/sign-in" class="mb-0 fw-bold d">
+            <i class="fa-solid fa-unlock mx-2"></i>
+            <span class="border-bottom">I already have an account</span>
+          </a>
+        </div>
+        <div data-aos="fade-down" class="register-form mx-3">
+          <div class="heading mb-4">
+            <h2 class="fw-bolder">
+              <span class="fst-italic headings-font fw-bolder">Welcome.</span>
+              <br />
+              Let's create your account
+            </h2>
+          </div>
+
+          <form
+            class="form"
+            [formGroup]="registerForm"
+            (ngSubmit)="submitForm()"
+          >
+            <div class="inputs mb-3" [ngClass]="{ expanded: isExpanded }">
+              <div class="inputGroup mb-3">
+                <div class="px-2 py-2 input">
+                  <input
+                    formControlName="name"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    class="w-100"
+                    type="text"
+                    placeholder="Full name"
+                  />
+                </div>
+                <div
+                  class="alerts"
+                  *ngIf="
+                    registerForm.get('name')?.errors &&
+                    registerForm.get('name')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('name')?.getError('required')"
+                  >
+                    Your name is required
+                  </p>
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('name')?.getError('minlength')"
+                  >
+                    Name must be at least 3 characters.
+                  </p>
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('name')?.getError('pattern')"
+                  >
+                    Name can not contain special characters.
+                  </p>
+                </div>
+              </div>
+
+              <div class="inputGroup mb-3">
+                <div class="px-2 py-2 input">
+                  <input
+                    formControlName="email"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    class="w-100"
+                    type="email"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <p class="mb-0 px-2 text-danger" *ngIf="errMsg">
+                  {{ errMsg }}
+                </p>
+                <div
+                  class="alerts"
+                  *ngIf="
+                    registerForm.get('email')?.errors &&
+                    registerForm.get('email')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('email')?.getError('required')"
+                  >
+                    Email address is required
+                  </p>
+
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('email')?.getError('email')"
+                  >
+                    email is invalid, e.g johndoe@example.com
+                  </p>
+                </div>
+              </div>
+
+              <div class="inputGroup mb-3">
+                <div class="px-2 py-2 input d-flex align-items-center gap-2">
+                  <input
+                    formControlName="password"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    class="w-100"
+                    [type]="showPassword ? 'text' : 'password'"
+                    placeholder="At least 8 characters"
+                  />
+                  <i
+                    role="button"
+                    (click)="togglePasswordVisibility('password')"
+                    [ngClass]="{
+                        'fa-eye-slash' : showPassword,
+                        'fa-eye' : !showPassword,
+                    }"
+                    class="fa-regular"
+                  ></i>
+                </div>
+                <div
+                  class="alerts"
+                  *ngIf="
+                    registerForm.get('password')?.errors &&
+                    registerForm.get('password')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('password')?.getError('required')"
+                  >
+                    Password is required
+                  </p>
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('password')?.getError('pattern')"
+                  >
+                    Password requires at least one uppercase letter and one
+                    number.
+                  </p>
+                </div>
+              </div>
+
+              <div class="inputGroup mb-3">
+                <div class="px-2 py-2 input d-flex align-items-center gap-2">
+                  <input
+                    formControlName="rePassword"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    class="w-100"
+                    [type]="showRePassword ? 'text' : 'password'"
+                    placeholder="Confirm your password"
+                  />
+                  <i
+                    role="button"
+                    class="fa-regular"
+                    [ngClass]="{
+                        'fa-eye-slash' : showRePassword,
+                        'fa-eye' : !showRePassword,
+                    }"
+                    (click)="togglePasswordVisibility('rePassword')"
+                  ></i>
+                </div>
+                <div
+                  class="alerts"
+                  *ngIf="
+                    registerForm.get('rePassword')?.errors &&
+                    registerForm.get('rePassword')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('rePassword')?.getError('required')"
+                  >
+                    Confirm password number is required
+                  </p>
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('rePassword')?.getError('misMatch')"
+                  >
+                    Passwords does not match
+                  </p>
+                </div>
+              </div>
+
+              <div class="inputGroup">
+                <div class="px-2 py-2 input">
+                  <input
+                    formControlName="phone"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    class="w-100"
+                    type="text"
+                    placeholder="Your phone number"
+                  />
+                </div>
+                <div
+                  class="alerts"
+                  *ngIf="
+                    registerForm.get('phone')?.errors &&
+                    registerForm.get('phone')?.touched
+                  "
+                >
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('phone')?.getError('required')"
+                  >
+                    Phone number is required
+                  </p>
+                  <p
+                    class="mb-0 px-2 text-danger"
+                    *ngIf="registerForm.get('phone')?.getError('pattern')"
+                  >
+                    Phone number must be Egyptian, e.g 01123456789
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="fw-medium">
+              By signing up, I accept the ideateui
+              <a class="fw-bold">Term of Service</a>
+              and acknowledge <br />
+              the <a class="fw-bold">Privacy Policy</a>
+            </p>
+            <button type="submit" class="primary-btn w-100 fw-bold fs-6">
+              <span *ngIf="!isLoading">Create account</span>
+              <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+            </button>
+          </form>
+
+          <div class="spliter d-flex align-items-center gap-3 my-4">
+            <div class="line"></div>
+            OR
+            <div class="line"></div>
+          </div>
+
+          <div class="social-media">
+            <div class="option w-100 fw-semibold mb-3 py-2">
+              <i class="fa-brands fa-google"></i> Continue with Google
+            </div>
+            <div class="option w-100 fw-semibold mb-3 py-2">
+              <i class="fa-brands fa-microsoft"></i> Continue with Microsoft
+            </div>
+            <div class="option w-100 fw-semibold mb-3 py-2">
+              <i class="fa-brands fa-apple"></i> Continue with Apple
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-5 px-0 image-container">
+        <div class="image w-100 h-100 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1707912079134-becf5a3598e2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="image"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

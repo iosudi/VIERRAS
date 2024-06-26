@@ -1,0 +1,76 @@
+<div class="popup">
+  <div class="container-fluid">
+    <div role="button" class="close-icon" (click)="close()">
+      <i class="fa-solid fa-x"></i>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 px-0">
+        <div class="image">
+          <img [src]="product.imageCover" alt="image" />
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="content py-5">
+          <div
+            class="product-title d-flex justify-content-between mb-3 pb-3 border-bottom"
+          >
+            <div class="heading">
+              <h2 class="text-capitalize fw-bolder headings-font mb-1">
+                {{ product.title }}
+              </h2>
+              <p class="mb-0 brand-name">{{ product.brand.name }}</p>
+            </div>
+            <div class="price">{{ product.price | currency : "E£" }}</div>
+          </div>
+
+          <p class="description">
+            {{ product.description }}
+          </p>
+
+          <div
+            class="controls d-flex justify-content-center align-items-center gap-4 pb-5 border-bottom"
+          >
+            <input type="number" class="form-control" value="1" />
+            <button
+              class="primary-btn fw-bolder w-50"
+              (click)="addToCart(product.id)"
+            >
+              add to cart
+            </button>
+            <button class="wishlist-btn" title="Add to wishlist">
+              <i
+                *ngIf="!wishListProducts.includes($any(product.id))"
+                role="button"
+                class="fa-regular fa-heart"
+                (click)="addToWishlist(product.id)"
+              ></i>
+              <i
+                *ngIf="wishListProducts.includes($any(product.id))"
+                role="button"
+                class="fa-solid fa-heart"
+                (click)="removeFromWishlist(product.id)"
+              ></i>
+            </button>
+          </div>
+
+          <div class="social-links d-flex gap-4 my-4">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+
+          <div class="details">
+            <p class="mb-2 id text-uppercase">
+              <span class="fw-bold">SKU : </span> {{ product.id }}
+            </p>
+            <p class="mb-0 category text-uppercase">
+              <span class="fw-bold">Category : </span>
+              {{ product.category.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

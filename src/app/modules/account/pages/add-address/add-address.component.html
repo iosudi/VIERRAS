@@ -1,0 +1,129 @@
+<main>
+  <h2 class="h5 fw-bolder mb-4">Edit address</h2>
+
+  <form class="form" [formGroup]="addressDetails" (ngSubmit)="onSubmit()">
+    <div class="inputs mb-3">
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="name"
+            class="w-100"
+            type="text"
+            placeholder="Full name"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            addressDetails.get('name')?.errors &&
+            addressDetails.get('name')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('name')?.getError('required')"
+          >
+            Your name is required
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('name')?.getError('minlength')"
+          >
+            Name must be at least 3 characters.
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('name')?.getError('pattern')"
+          >
+            Name can not contain special characters.
+          </p>
+        </div>
+      </div>
+
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="details"
+            class="w-100"
+            type="text"
+            placeholder="Address details"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            addressDetails.get('details')?.errors &&
+            addressDetails.get('details')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('details')?.getError('required')"
+          >
+            Address details is required
+          </p>
+        </div>
+      </div>
+
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="city"
+            class="w-100"
+            type="text"
+            placeholder="City name"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            addressDetails.get('city')?.errors &&
+            addressDetails.get('city')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('city')?.getError('required')"
+          >
+            City name is required
+          </p>
+        </div>
+      </div>
+
+      <div class="inputGroup mb-3">
+        <div class="px-2 py-2 input">
+          <input
+            formControlName="phone"
+            class="w-100"
+            type="text"
+            placeholder="Phone number"
+          />
+        </div>
+        <div
+          class="alerts"
+          *ngIf="
+            addressDetails.get('phone')?.errors &&
+            addressDetails.get('phone')?.touched
+          "
+        >
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('phone')?.getError('required')"
+          >
+            Phone number is required
+          </p>
+          <p
+            class="mb-0 px-2 text-danger"
+            *ngIf="addressDetails.get('phone')?.getError('pattern')"
+          >
+            Phone number must be Egyptian, e.g 01123456789
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="primary-btn fw-bold fs-6">
+      Confirm address
+    </button>
+  </form>
+</main>

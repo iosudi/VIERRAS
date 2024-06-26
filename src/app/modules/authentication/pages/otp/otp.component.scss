@@ -1,0 +1,41 @@
+main {
+  height: 100vh;
+  position: relative;
+  .backBTN {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .content {
+    i {
+      font-size: 40px;
+      background: var(--brand-color);
+      padding: 15px 20px;
+      border-radius: 10px;
+      color: var(--white-color);
+    }
+
+    p {
+      font-size: 18px;
+      color: var(--paragraph-color);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      outline: none;
+      &:focus {
+        border: 1px solid var(--brand-color);
+      }
+    }
+
+    button {
+      letter-spacing: 1px;
+    }
+  }
+}

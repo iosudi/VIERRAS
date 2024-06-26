@@ -1,0 +1,82 @@
+{
+  "dir": "ltr",
+  "navItems": {
+    "HOME": "Home",
+    "SHOP": "Shop",
+    "CATEGORIES": "Categories",
+    "BLOG": "blog",
+    "CONTACT": "contact",
+    "CART": "Cart"
+  },
+
+  "FOOTER": {
+    "NEWSLETTER": {
+      "PARAGRAPH": "Get newsletter update for upcoming product and best discounts for all items"
+    },
+    "CATEGORY_HEADING": "Categories",
+    "CATEGORY_ITEMS": {
+      "MEN": "Men",
+      "WOMEN": "Women",
+      "KIDS": "Kids",
+      "SKINCARE": "Skincare",
+      "ELECTRONICS": "Electronics"
+    },
+    "ACCOUNT_HEADING": "Account",
+    "ACCOUNT_ITEMS": {
+      "MY_ACCOUNT": "My account",
+      "LOGIN_REGISTER": "Login / register",
+      "CART": "Cart",
+      "WISHLIST": "Wishlist",
+      "SHOP": "Shop"
+    },
+    "SOCIAL_MEDIA_HEADING": "Our social media",
+    "SOCIAL_MEDIA_ITEMS": {
+      "INSTAGRAM": "Instagram",
+      "FACEBOOK": "Facebook",
+      "YOUTUBE": "Youtube",
+      "TWITTER": "Twitter"
+    }
+  },
+
+  "SLIDES": {
+    "MEN_FASHION_HEADING": "VIERRAS Men's Fashion Collection",
+    "MEN_FASHION_DESCRIPTION": "Discover VIERRAS Men's Fashion Collection. Elegant apparel designed to elevate your style with timeless sophistication and modern flair.",
+    "ELECTRONICS_HEADING": "VIERRAS Electronics",
+    "ELECTRONICS_DESCRIPTION": "Experience VIERRAS Electronics. Cutting-edge gadgets and high-performance devices designed to enhance your life with innovation and functionality.",
+    "PERFUME_HEADING": "VIERRAS Perfume Collection",
+    "PERFUME_DESCRIPTION": "Indulge in VIERRAS Perfume Collection. Exquisite fragrances crafted to captivate your senses and leave a lasting impression.",
+    "WOMEN_FASHION_HEADING": "VIERRAS Women's Fashion Collection",
+    "WOMEN_FASHION_DESCRIPTION": "Explore VIERRAS Women's Fashion Collection. Chic clothing crafted to enhance your style and grace for every occasion.",
+    "SKINCARE_HEADING": "VIERRAS Skincare Collection",
+    "SKINCARE_DESCRIPTION": "Discover VIERRAS Skincare Collection. Premium products designed to nourish and rejuvenate your skin for a radiant, healthy glow.",
+    "BANNER_HEADING": "DISCOVER OUR COSMETICS",
+    "BANNER_PARAGRAPH": "CLICK THE BANNER TO FIND OUT WHAT MAKES OUR COSMETICS SPECIAL"
+  },
+
+  "FEATURES": {
+    "DELIVERY_HEADING": "free and fast delivery",
+    "DELIVERY_DESCRIPTION": "Free delivery for all orders over $140",
+    "CUSTOMER_HEADING": "24/7 CUSTOMER SERVICE",
+    "CUSTOMER_DESCRIPTION": "Friendly 24/7 customer support",
+    "MONEY_HEADING": "MONEY BACK GUARANTEE",
+    "MONEY_DESCRIPTION": "We return money within 30 days"
+  },
+
+  "HEADINGS": {
+    "POPULAR_HEADER": "Popular Products",
+    "POPULAR_PARAGRAPH": "Lorem ipsum dolor sit amet.",
+    "CATEGORY_HEADER": "Best For Your Categories",
+    "CATEGORY_PARAGRAPH": "Lorem ipsum dolor sit amet."
+  },
+
+  "BUTTONS": {
+    "SHOP_NOW": "Shop now",
+    "SHOW_MORE": "Show more",
+    "SEE_DETAILS": "See details",
+    "SUBSCRIBE": "Subscribe"
+  },
+
+  "PLACEHOLDERS": {
+    "UR_EMAIL": "Your email"
+  }
+}

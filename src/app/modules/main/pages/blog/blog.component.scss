@@ -1,0 +1,44 @@
+main {
+  .hero {
+    background: var(--blur-background);
+    padding: 80px 0px 50px;
+    h1 {
+      font-size: 80px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+
+  .posts {
+    padding: 80px 0px 50px;
+    .post {
+      .image {
+        width: 100%;
+        height: 200px;
+      }
+      .post_content {
+        h5 {
+          color: var(--paragraph-color);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 515px) {
+  .hero {
+    h1 {
+      font-size: 60px !important;
+    }
+    p {
+      font-size: 18px !important;
+    }
+  }
+
+  .post_content {
+    h5 {
+      width: 100% !important;
+    }
+  }
+}

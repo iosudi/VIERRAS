@@ -1,0 +1,47 @@
+form {
+  .inputs {
+    transition: 0.5s;
+    overflow: hidden;
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    .inputGroup {
+      .input {
+        border: 1px solid var(--border-color);
+        background: var(--input-bg);
+        border-radius: 10px;
+        input {
+          outline: none;
+          border: 0;
+          background: transparent;
+          font-size: 18px;
+        }
+        &:focus-within {
+          border-color: var(--brand-color);
+        }
+      }
+    }
+  }
+
+  button {
+    &:hover {
+      color: var(--brand-color);
+      background: transparent;
+      box-shadow: 0 0 2px 1px var(--brand-color);
+    }
+  }
+
+  p a {
+    color: var(--brand-color);
+  }
+}
+
+@media (max-width: 767px) {
+  main {
+    form {
+      .inputs {
+        width: 100%;
+      }
+    }
+  }
+}

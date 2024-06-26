@@ -1,0 +1,232 @@
+<footer class="mt-5">
+  <div class="container-fluid px-0">
+    <div class="footer my-5 px-5">
+      <div class="row gy-4" [dir]="'dir' | translate">
+        <div class="col-lg-5">
+          <div class="logo-newsletter">
+            <div class="logo">
+              <h2 class="text-capitalize fw-bolder headings-font">vierras</h2>
+            </div>
+            <div class="newsletter">
+              <p class="fw-normal">
+                {{ "FOOTER.NEWSLETTER.PARAGRAPH" | translate }}
+              </p>
+              <div class="form d-flex gap-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="'PLACEHOLDERS.UR_EMAIL' | translate"
+                />
+                <button class="primary-btn">
+                  {{ "BUTTONS.SUBSCRIBE" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="footer-links d-flex gap-3 justify-content-around">
+            <div class="footer-item">
+              <h6
+                class="text-capitalize fw-bold d-flex justify-content-between"
+                (click)="toggleMenu('category')"
+              >
+                {{ "FOOTER.CATEGORY_HEADING" | translate }}
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="{
+                  'fa-chevron-down':!expandCategoryMenu,
+                  'fa-chevron-up': expandCategoryMenu,
+                }"
+                ></i>
+              </h6>
+              <ul
+                class="px-0 mb-0 collapse-list"
+                [class.expanded]="expandCategoryMenu"
+              >
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.CATEGORY_ITEMS.MEN" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.CATEGORY_ITEMS.WOMEN" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.CATEGORY_ITEMS.KIDS" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.CATEGORY_ITEMS.SKINCARE" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.CATEGORY_ITEMS.ELECTRONICS" | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-item">
+              <h6
+                class="text-capitalize fw-bolder d-flex justify-content-between"
+                (click)="toggleMenu('account')"
+              >
+                {{ "FOOTER.ACCOUNT_HEADING" | translate }}
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="{
+                  'fa-chevron-down':!expandAccountMenu,
+                  'fa-chevron-up': expandAccountMenu,
+                }"
+                ></i>
+              </h6>
+              <ul
+                class="px-0 mb-0 collapse-list"
+                [class.expanded]="expandAccountMenu"
+              >
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.ACCOUNT_ITEMS.MY_ACCOUNT" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.ACCOUNT_ITEMS.LOGIN_REGISTER" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.ACCOUNT_ITEMS.CART" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.ACCOUNT_ITEMS.WISHLIST" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.ACCOUNT_ITEMS.SHOP" | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-item">
+              <h6
+                class="text-capitalize fw-bolder d-flex justify-content-between"
+                (click)="toggleMenu('social')"
+              >
+                {{ "FOOTER.SOCIAL_MEDIA_HEADING" | translate }}
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="{
+                  'fa-chevron-down':!expandSocialMenu,
+                  'fa-chevron-up': expandSocialMenu,
+                }"
+                ></i>
+              </h6>
+              <ul
+                class="px-0 mb-0 collapse-list"
+                [class.expanded]="expandSocialMenu"
+              >
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.SOCIAL_MEDIA_ITEMS.INSTAGRAM" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.SOCIAL_MEDIA_ITEMS.FACEBOOK" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.SOCIAL_MEDIA_ITEMS.YOUTUBE" | translate }}
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/home">
+                    {{ "FOOTER.SOCIAL_MEDIA_ITEMS.TWITTER" | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="footer-item site_options px-3 py-2 fw-bold"
+              (click)="showDialog()"
+            >
+              <span class="language" *ngIf="currentLanguage === 'ar'"
+                >العربيه</span
+              >
+              <span class="language" *ngIf="currentLanguage === 'en'"
+                >English</span
+              >
+              -
+              <span class="currency">USD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyRight d-flex justify-content-between px-5 py-2">
+      <p class="mb-0">©2024 iosudi Development</p>
+      <ul class="px-0 mb-0 d-flex gap-4">
+        <li><a href="">Terms & Conditions</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<p-dialog
+  header="Regional settings"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem', margin: '1rem' }"
+>
+  <div class="content">
+    <div class="select mt-4 mb-4">
+      <div class="title fw-medium">
+        <i class="fa-solid fa-language"></i> Language
+      </div>
+      <select class="form-select mt-1" #languageSelect>
+        <option [selected]="currentLanguage == 'en'" value="en">English</option>
+        <option [selected]="currentLanguage == 'ar'" value="ar">
+          اللغه العربيه
+        </option>
+      </select>
+    </div>
+    <div class="select mb-4">
+      <div class="title fw-medium">
+        <i class="fa-solid fa-coins"></i> Currency
+      </div>
+      <select class="form-select mt-1" #currencySelect>
+        <option value="egp">EGP</option>
+        <option value="usd">USD</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <button
+        class="btn btn-dark d-block w-100 my-2"
+        (click)="saveRegionalSettings()"
+      >
+        Save
+      </button>
+      <button class="btn btn-light d-block w-100" (click)="hideDialog()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</p-dialog>

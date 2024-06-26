@@ -1,0 +1,58 @@
+<app-client-nav></app-client-nav>
+<main class="mt-5">
+  <div class="container">
+    <h1 class="mb-3 fw-bolder">My profile</h1>
+    <div class="row gy-4 mt-4">
+      <div data-aos="fade-right" class="col-md-3 h-100">
+        <div class="links p-3 h-100">
+          <h6 class="fw-bolder">My account</h6>
+          <ul class="p-0">
+            <li class="mb-2">
+              <a routerLink="account-information">Account information</a>
+            </li>
+            <li class="mb-2">
+              <a routerLink="change-password">Change password</a>
+            </li>
+            <li class="mb-2">
+              <a routerLink="address">Modify address</a>
+            </li>
+            <li class="mb-2"><a routerLink="/wishlist">Modify wishlist</a></li>
+            <li class="mb-2">
+              <a (click)="showDialog()" role="button">Logout</a>
+            </li>
+          </ul>
+          <h6 class="fw-bolder">My orders</h6>
+          <ul class="p-0">
+            <li class="mb-2">
+              <a routerLink="/allorders">View orders history</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9 px-3">
+        <div class="child-container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+  <ng-template pTemplate="headless">
+    <div class="text-center dialog p-4 rounded-3 mx-2">
+      <i class="fa-solid fa-exclamation bg-warning mb-3"></i>
+
+      <h5 class="fw-bolder">Log Out Confirmation</h5>
+      <p class="fw-medium">
+        You will be logged out of your account . If you're sure you want to log
+        out, click "Log Out" below. Otherwise, click "Cancel" to stay logged in.
+      </p>
+      <div class="buttons d-flex gap-2 justify-content-center">
+        <button class="btn btn-danger" (click)="logOut()">Log Out</button>
+        <button class="btn btn-dark" (click)="visible = false">Cancel</button>
+      </div>
+    </div></ng-template
+  >
+</p-dialog>
+<app-footer></app-footer>
