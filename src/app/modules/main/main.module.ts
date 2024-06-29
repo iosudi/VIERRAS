@@ -15,8 +15,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
-import { ShopNavComponent } from './components/shop-nav/shop-nav.component';
-import { ShopPhoneNavComponent } from './components/shop-phone-nav/shop-phone-nav.component';
 import { MainRoutingModule } from './main-routing.module';
 import { BlogComponent } from './pages/blog/blog.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
@@ -28,8 +26,6 @@ import { ProductsService } from './services/products.service';
 @NgModule({
   declarations: [
     QuickViewComponent,
-    ShopNavComponent,
-    ShopPhoneNavComponent,
     BlogComponent,
     CategoriesComponent,
     ContactComponent,

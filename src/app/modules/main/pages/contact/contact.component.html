@@ -1,8 +1,8 @@
 <app-client-nav></app-client-nav>
-<main class="container mt-5">
+<main class="container mt-5" [dir]="'dir' | translate">
   <div class="heading text-center mb-5">
-    <h1 class="fw-bolder">Contact Us</h1>
-    <p class="fw-semibold">Any question or remarks? Just write us a message!</p>
+    <h1 class="fw-bolder">{{ "contact.heading.title" | translate }}</h1>
+    <p class="fw-semibold">{{ "contact.heading.subtitle" | translate }}</p>
   </div>
   <div class="contact-box">
     <div class="row gy-4 p-1 rounded-4">
@@ -11,8 +11,14 @@
           class="contact__information p-4 d-flex flex-column justify-content-between rounded-4"
         >
           <div class="title">
-            <h2 class="h3 fw-bold">Contact Information</h2>
-            <p class="mb-0 fw-medium">Say something to start a live chat!</p>
+            <h2 class="h3 fw-bold">
+              {{ "contact.contactBox.contactInformation.title" | translate }}
+            </h2>
+            <p class="mb-0 fw-medium">
+              {{
+                "contact.contactBox.contactInformation.startChat" | translate
+              }}
+            </p>
           </div>
           <div class="information">
             <ul class="d-flex flex-column gap-5 p-0 mb-0">
@@ -48,18 +54,22 @@
             <div class="inputs">
               <div class="name d-flex gap-3 mb-3">
                 <div class="input_group w-100">
-                  <label class="d-block fw-medium mb-2">First Name</label>
+                  <label class="d-block fw-medium mb-2">{{
+                    "contact.contactBox.form.inputs.firstName" | translate
+                  }}</label>
                   <input
                     type="text"
-                    placeholder="John"
+                    [placeholder]="'PLACEHOLDERS.firstName' | translate"
                     formControlName="firstName"
                   />
                 </div>
                 <div class="input_group w-100">
-                  <label class="d-block fw-medium mb-2">Last Name</label>
+                  <label class="d-block fw-medium mb-2">{{
+                    "contact.contactBox.form.inputs.lastName" | translate
+                  }}</label>
                   <input
                     type="text"
-                    placeholder="Doe"
+                    [placeholder]="'PLACEHOLDERS.lastName' | translate"
                     formControlName="lastName"
                   />
                 </div>
@@ -67,7 +77,9 @@
 
               <div class="contact-info d-flex gap-3">
                 <div class="input_group w-100">
-                  <label class="d-block fw-medium mb-2">Email</label>
+                  <label class="d-block fw-medium mb-2">{{
+                    "contact.contactBox.form.inputs.email" | translate
+                  }}</label>
                   <input
                     type="email"
                     placeholder="example@email.com"
@@ -75,7 +87,9 @@
                   />
                 </div>
                 <div class="input_group w-100">
-                  <label class="d-block fw-medium mb-2">Phone Number</label>
+                  <label class="d-block fw-medium mb-2">{{
+                    "contact.contactBox.form.inputs.phone" | translate
+                  }}</label>
                   <input
                     type="text"
                     placeholder="(+20) 01123648485"
@@ -86,7 +100,9 @@
             </div>
 
             <div class="subject_type my-4">
-              <h3 class="h5 fw-semibold mb-3">Select Subject?</h3>
+              <h3 class="h5 fw-semibold mb-3">
+                {{ "contact.contactBox.form.subject.title" | translate }}
+              </h3>
               <div class="subjects d-flex gap-3 flex-wrap">
                 <div class="input_group my-2 d-flex gap-2 align-items-center">
                   <p-radioButton
@@ -96,7 +112,10 @@
                     [(ngModel)]="ingredient"
                   />
                   <label for="Inquiry1" class="fw-medium">
-                    General Inquiry
+                    {{
+                      "contact.contactBox.form.subject.options.label1"
+                        | translate
+                    }}
                   </label>
                 </div>
                 <div class="input_group my-2 d-flex gap-2 align-items-center">
@@ -107,7 +126,10 @@
                     [(ngModel)]="ingredient"
                   />
                   <label for="Inquiry2" class="fw-medium">
-                    General Inquiry
+                    {{
+                      "contact.contactBox.form.subject.options.label2"
+                        | translate
+                    }}
                   </label>
                 </div>
                 <div class="input_group my-2 d-flex gap-2 align-items-center">
@@ -118,7 +140,10 @@
                     [(ngModel)]="ingredient"
                   />
                   <label for="Inquiry3" class="fw-medium">
-                    General Inquiry
+                    {{
+                      "contact.contactBox.form.subject.options.label3"
+                        | translate
+                    }}
                   </label>
                 </div>
                 <div class="input_group my-2 d-flex gap-2 align-items-center">
@@ -129,7 +154,10 @@
                     [(ngModel)]="ingredient"
                   />
                   <label for="Inquiry4" class="fw-medium">
-                    General Inquiry
+                    {{
+                      "contact.contactBox.form.subject.options.label4"
+                        | translate
+                    }}
                   </label>
                 </div>
               </div>
@@ -137,17 +165,19 @@
 
             <div class="message">
               <div class="input_group w-100">
-                <label class="d-block fw-medium mb-2">Message</label>
+                <label class="d-block fw-medium mb-2">{{
+                  "contact.contactBox.form.message" | translate
+                }}</label>
                 <textarea
                   rows="4"
-                  placeholder="Write your message..."
+                  [placeholder]="'PLACEHOLDERS.writeMessage' | translate"
                   formControlName="message"
                 ></textarea>
               </div>
             </div>
 
             <button type="submit" class="primary-btn ms-auto fw-bold mt-3">
-              send message
+              {{ "contact.contactBox.form.button" | translate }}
             </button>
           </form>
         </div>
@@ -159,12 +189,13 @@
   <ng-template pTemplate="headless">
     <div class="text-center dialog p-4 rounded-3 mx-2">
       <i class="fa-solid fa-check bg-success mb-3"></i>
-      <h5 class="fw-bolder">Success</h5>
+      <h5 class="fw-bolder">{{ "contact.successDialog.title" | translate }}</h5>
       <p class="fw-medium">
-        Your message has been sent successfully. Thank you for contacting us. We
-        will get back to you shortly.
+        {{ "contact.successDialog.message" | translate }}
       </p>
-      <button class="primary-btn" (click)="visible = false">great!</button>
+      <button class="primary-btn" (click)="visible = false">
+        {{ "contact.successDialog.button" | translate }}
+      </button>
     </div></ng-template
   >
 </p-dialog>

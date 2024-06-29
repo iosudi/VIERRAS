@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { OrdersService } from '../../services/orders.service';
 
 @Component({
@@ -7,7 +8,11 @@ import { OrdersService } from '../../services/orders.service';
   styleUrls: ['./user-orders.component.scss'],
 })
 export class UserOrdersComponent implements OnInit {
-  constructor(private _OrdersService: OrdersService) {}
+  constructor(
+    private _OrdersService: OrdersService,
+    private translate: TranslateService
+  ) {}
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   userOrdersInfo: any[] = [];
   sliced!: object[];
@@ -15,6 +20,7 @@ export class UserOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this._OrdersService.decodeUser();
+    this.translate.use(this.currentLanguage);
 
     this.userId = this._OrdersService.userInformation.id;
 

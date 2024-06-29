@@ -2,7 +2,7 @@
 
 <section class="container mt-3 root">
   <app-bread-crumb></app-bread-crumb>
-  <div class="row gy-5 pt-4 mb-5">
+  <div class="row gy-5 pt-4 mb-5" [dir]="'dir' | translate">
     <div class="col-lg-7">
       <div class="product-overview d-flex gap-4">
         <div class="thumbnails d-flex flex-column justify-content-center gap-3">
@@ -70,7 +70,7 @@
             class="cart-btn primary-btn w-100 fw-bold fs-6"
             (click)="addToCart($event, product.id)"
           >
-            add to cart
+            {{ "BUTTONS.addToCart" | translate }}
           </button>
         </div>
 
@@ -81,12 +81,14 @@
                 <i class="fa-solid fa-truck-fast fs-3"></i>
               </div>
               <div class="feature-text">
-                <h4 class="mb-0 h5">Free Shipping</h4>
+                <h4 class="mb-0 h5">
+                  {{ "productDetails.freeShipping.title" | translate }}
+                </h4>
                 <p
                   class="mb-0 text-decoration-underline fw-medium"
                   role="button"
                 >
-                  Enter your postal code for Delivery Availability
+                  {{ "productDetails.freeShipping.description" | translate }}
                 </p>
               </div>
             </div>
@@ -97,12 +99,14 @@
                 <i class="fa-solid fa-rotate fs-3"></i>
               </div>
               <div class="feature-text">
-                <h4 class="mb-0 h5">Return Delivery</h4>
+                <h4 class="mb-0 h5">
+                  {{ "productDetails.returnDelivery.description" | translate }}
+                </h4>
                 <p class="mb-0 fw-medium">
-                  Free 30 Days Delivery Returns.
-                  <span class="text-decoration-underline" role="button"
-                    >Details</span
-                  >
+                  {{ "productDetails.returnDelivery.description" | translate }}
+                  <span class="text-decoration-underline" role="button">
+                    {{ "productDetails.returnDelivery.details" | translate }}
+                  </span>
                 </p>
               </div>
             </div>
@@ -114,8 +118,11 @@
 
   <div
     class="reviews_box d-flex flex-column align-items-center mt-5 border-bottom pb-4"
+    [dir]="'dir' | translate"
   >
-    <h2 class="text-uppercase position-relative fw-semibold">reviews</h2>
+    <h2 class="text-uppercase position-relative fw-semibold">
+      {{ "productDetails.reviews.title" | translate }}
+    </h2>
 
     <div class="w-100 reviews">
       <div class="row">
@@ -125,7 +132,7 @@
               class="mb-0 w-100 text-center fs-5 fw-medium no_reviews"
               *ngIf="reviews.length == 0"
             >
-              No reviews available for this product yet
+              {{ "productDetails.reviews.noReviews" | translate }}
             </p>
             <div
               class="my-4 pb-2 pt-4 border-bottom"
@@ -139,26 +146,32 @@
               (click)="toggleActive()"
               class="outLined-primary-btn fw-bold text-uppercase my-3 mx-auto"
             >
-              Write a Review
+              {{ "productDetails.reviews.writeReview" | translate }}
             </button>
           </div>
         </div>
 
         <div class="col-12" *ngIf="isActive">
           <form [formGroup]="reviewFrom" (ngSubmit)="addReview()">
-            <h3 class="h5 text-uppercase mb-4 fw-semibold">write a review</h3>
+            <h3 class="h5 text-uppercase mb-4 fw-semibold">
+              {{ "productDetails.reviews.reviewForm.title" | translate }}
+            </h3>
             <div class="my-3 d-flex flex-column">
-              <label class="mb-2" for="name">Name</label>
+              <label class="mb-2" for="name">
+                {{ "productDetails.reviews.reviewForm.name" | translate }}
+              </label>
               <input
                 type="text"
                 class="w-50"
                 formControlName="name"
                 id="name"
-                placeholder="enter your name"
+                [placeholder]="'PLACEHOLDERS.reviewName' | translate"
               />
             </div>
             <div class="my-3 d-flex flex-column">
-              <label class="mb-2" for="email">Email</label>
+              <label class="mb-2" for="email">{{
+                "productDetails.reviews.reviewForm.email"
+              }}</label>
               <input
                 type="email"
                 class="w-50"
@@ -168,22 +181,27 @@
               />
             </div>
             <div class="my-3 d-flex flex-column">
-              <label class="mb-2" for="title">Review Title</label>
+              <label class="mb-2" for="title">{{
+                "productDetails.reviews.reviewForm.reviewTitle" | translate
+              }}</label>
               <input
                 type="text"
                 class="w-50"
                 formControlName="title"
                 id="title"
-                placeholder="write your review title"
+                [placeholder]="'PLACEHOLDERS.reviewTitle' | translate"
               />
             </div>
             <div class="my-3 d-flex flex-column">
-              <label class="mb-2" for="review">Review (2000)</label>
+              <label class="mb-2" for="review">{{
+                "productDetails.reviews.reviewForm.reviewPlaceholder"
+                  | translate
+              }}</label>
               <textarea
                 formControlName="reviewBody"
                 id="review"
                 class="w-50"
-                placeholder="write your comments here"
+                [placeholder]="'PLACEHOLDERS.reviewBody' | translate"
               ></textarea>
             </div>
 
@@ -191,7 +209,7 @@
               type="submit"
               class="my-2 btn outLined-primary-btn fw-bold text-uppercase"
             >
-              Submit review
+              {{ "productDetails.reviews.reviewForm.submitButton" | translate }}
             </button>
           </form>
         </div>
@@ -200,13 +218,18 @@
   </div>
 
   <div class="related mt-2 pt-4">
-    <div class="heading d-flex justify-content-between align-items-center mb-4">
-      <h3 class="mb-0 fw-semibold">Related Products</h3>
+    <div
+      [dir]="'dir' | translate"
+      class="heading d-flex justify-content-between align-items-center mb-4"
+    >
+      <h3 class="mb-0 fw-semibold">
+        {{ "productDetails.relatedProducts.title" | translate }}
+      </h3>
       <button
         class="primary-btn"
         [routerLink]="['/shop/categories', product.category._id]"
       >
-        Explore more
+        {{ "productDetails.relatedProducts.exploreMore" | translate }}
       </button>
     </div>
     <owl-carousel-o [options]="customOptions">
@@ -251,7 +274,7 @@
             >
               <div class="product-text mt-3 w-100">
                 <p class="mb-0 fw-medium text-capitalize">
-                  from {{ product.brand.name }}
+                  {{ product.category.name }}
                 </p>
                 <div
                   class="d-flex align-items-center justify-content-between gap-1"

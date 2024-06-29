@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from 'primeng/dialog';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
@@ -25,6 +26,7 @@ import { ModifyAddressComponent } from './pages/modify-address/modify-address.co
     SharedModule,
     ReactiveFormsModule,
     DialogModule,
+    TranslateModule,
   ],
 })
 export class AccountModule {}

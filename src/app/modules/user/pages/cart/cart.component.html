@@ -1,74 +1,63 @@
 <app-client-nav></app-client-nav>
 
-<div class="root px-5">
+<main class="px-5 pt-5">
   <div class="mx-5 breadcrumb">
     <app-bread-crumb></app-bread-crumb>
   </div>
-  <div class="row mx-5 gy-4">
-    <div class="col-xl-7 px-5">
-      <div class="cart-content">
-        <h1 class="fw-bold">Your cart</h1>
-        <div
-          data-aos="fade-right"
-          class="cart-product border-bottom d-flex py-3"
-          *ngFor="let product of cartProducts.products"
-        >
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="image h-100 rounded-4 overflow-hidden">
-                <img [src]="product.product.imageCover" [alt]="product.tile" />
-              </div>
-            </div>
-            <div class="col-sm-9">
-              <div
-                class="product-text d-flex flex-column justify-content-center w-100 h-100"
+
+  <div class="row mx-5 gy-4" [dir]="'dir' | translate">
+    <div class="col-xl-9 px-5">
+      <div class="cart-content" data-aos="fade-down">
+        <div class="heading">
+          <h1 class="fw-bold">{{ "cart.title" | translate }}</h1>
+          <p class="mb-0">
+            <span class="fw-semibold">
+              {{ cartProducts.products.length }}
+              {{ "cart.items" | translate }}</span
+            >
+            {{ "cart.InCart" | translate }}
+          </p>
+        </div>
+        <div class="table-responsive rounded-4 p-4 mt-5">
+          <table cellPadding="20" class="w-100">
+            <thead>
+              <tr>
+                <th class="fs-5">
+                  {{ "cart.tableHeaders.product" | translate }}
+                </th>
+                <th class="fs-5">
+                  {{ "cart.tableHeaders.quantity" | translate }}
+                </th>
+                <th class="fs-5">
+                  {{ "cart.tableHeaders.totalPrice" | translate }}
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let product of cartProducts.products"
+                class="border-bottom"
+                data-aos="fade-down"
               >
-                <div
-                  class="info d-flex justify-content-between align-items-center gap-4"
-                >
-                  <h4 class="fw-semibold">{{ product.product.title }}</h4>
-                  <h4 class="fw-semibold">
-                    {{ product.price | currency : "E£" }}
-                  </h4>
-                </div>
-                <div class="description">
-                  <p class="fw-medium">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt tenetur maiores illo facilis unde reprehenderit, hic
-                    aspernatur, quas animi numquam optio distinctio odio
-                    provident soluta nisi impedit quis quo temporibus!
-                  </p>
-                </div>
-                <div
-                  class="controllers d-flex justify-content-between align-items-center"
-                >
-                  <div class="btns d-flex gap-3">
-                    <button
-                      class="p-0 button fs-3"
-                      *ngIf="
-                        !wishListProducts.includes($any(product.product.id))
-                      "
-                      (click)="addToWishlist(product.product.id)"
-                    >
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                    <button
-                      class="p-0 button fs-3"
-                      *ngIf="
-                        wishListProducts.includes($any(product.product.id))
-                      "
-                      (click)="removeFromWishlist(product.product.id)"
-                    >
-                      <i class="fa-solid fa-heart"></i>
-                    </button>
-                    <button
-                      class="p-0 button"
-                      (click)="removeProduct(product.product.id, removeBtn)"
-                      #removeBtn
-                    >
-                      <i class="fa-regular fa-trash-can fs-3 text-danger"></i>
-                    </button>
+                <td colspan="2" class="d-flex align-items-center gap-5 py-4">
+                  <div class="image rounded-4 overflow-hidden">
+                    <img
+                      [src]="product.product.imageCover"
+                      [alt]="product.tile"
+                    />
                   </div>
+                  <div class="product-text">
+                    <div class="info">
+                      <p class="fw-semibold mb-0 category-name">
+                        {{ product.product.category.name }}
+                      </p>
+                      <h4 class="fw-semibold">{{ product.product.title }}</h4>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="py-4">
                   <div
                     class="quantity d-flex justify-content-between align-items-center"
                   >
@@ -115,48 +104,103 @@
                       +
                     </button>
                   </div>
-                </div>
-              </div>
-            </div>
+                </td>
+                <td class="fw-semibold product-total text-center py-4 fs-5">
+                  {{ product.price * product.count | currency : "E£" }}
+                </td>
+                <td>
+                  <div class="controllers">
+                    <div class="btns d-flex gap-3">
+                      <button
+                        class="p-0 button"
+                        (click)="removeProduct(product.product.id, removeBtn)"
+                        #removeBtn
+                      >
+                        <i class="fa-solid fa-xmark fs-3 text-danger"></i>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div data-aos="fade-down" class="col-xl-3 py-4 px-3 cart_summary rounded-4">
+      <div class="discount mb-5">
+        <h2 class="fw-bold">{{ "cart.applyCoupon.title" | translate }}</h2>
+        <p class="fw-medium">
+          {{ "cart.applyCoupon.description" | translate }}
+        </p>
+        <div class="input_group">
+          <input
+            class="input_field d-block w-100 my-3"
+            [(ngModel)]="coupon"
+            [placeholder]="'PLACEHOLDERS.discountPlaceholder' | translate"
+            #couponInput
+          />
+          <button (click)="applyCoupon()" class="primary-btn w-100" #couponBtn>
+            {{ "cart.applyCoupon.applyButton" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="summary p-4 rounded-3">
+        <h2 class="fw-bold mb-4">
+          {{ "cart.summary.summaryTitle" | translate }}
+        </h2>
+        <div class="cart-summary pb-5 border-bottom mb-3">
+          <div class="subTotal d-flex justify-content-between mb-2">
+            <h4 class="fw-semibold h5">
+              {{ "cart.summary.subtotal" | translate }}
+            </h4>
+            <h4 class="fw-semibold h5">
+              {{ cartPrice | currency : "E£" }}
+            </h4>
+          </div>
+          <div class="discount d-flex justify-content-between mb-2">
+            <h4 class="fw-semibold h5 text-capitalize">
+              {{ "cart.summary.discount" | translate }}
+            </h4>
+            <h5 class="fw-semibold h5 text-danger">
+              -{{ discountedPrice | currency : "E£" }}
+            </h5>
+          </div>
+
+          <div class="taxes d-flex justify-content-between mb-2">
+            <h4 class="fw-semibold h5 text-capitalize">
+              {{ "cart.summary.taxes" | translate }}
+            </h4>
+            <h4 class="fw-semibold h5">{{ 50 | currency : "E£" }}</h4>
+          </div>
+          <div class="delivery-tax d-flex justify-content-between mb-2">
+            <h4 class="fw-semibold h5 text-capitalize">
+              {{ "cart.summary.deliveryHandling" | translate }}
+            </h4>
+            <h5 class="fw-semibold h5">
+              {{ "cart.summary.free" | translate }}
+            </h5>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div data-aos="fade-down" class="col-xl-5 px-5">
-      <h2 class="fw-bold mb-4">Summary</h2>
-      <div class="cart-summary pb-5 border-bottom mb-3">
-        <div class="subTotal d-flex justify-content-between mb-2">
-          <h4 class="fw-semibold h5">Subtotal</h4>
-          <h4 class="fw-semibold h5">
-            {{ cartPrice | currency : "E£" }}
+        <div class="total-price d-flex justify-content-between my-4">
+          <h4 class="fw-bold text-capitalize">
+            {{ "cart.summary.total" | translate }}
           </h4>
+          <h4 class="fw-bold">{{ cartPrice + 50 | currency : "E£" }}</h4>
         </div>
-        <div class="delivery-tax d-flex justify-content-between mb-2">
-          <h4 class="fw-semibold h5 text-capitalize">
-            Estimated delivery & handling
-          </h4>
-          <h4 class="fw-semibold h5">Free</h4>
-        </div>
-        <div class="taxes d-flex justify-content-between mb-2">
-          <h4 class="fw-semibold h5 text-capitalize">Estimated taxes</h4>
-          <h4 class="fw-semibold h5">{{ 50 | currency : "E£" }}</h4>
-        </div>
+        <button
+          class="primary-btn w-100 fw-bold"
+          [routerLink]="['/checkout', cartProducts._id]"
+          [disabled]="cartProducts.products.length == 0"
+        >
+          {{ "BUTTONS.checkoutButton" | translate }}
+        </button>
       </div>
-
-      <div class="total-price d-flex justify-content-between my-4">
-        <h4 class="fw-bold text-capitalize">Total</h4>
-        <h4 class="fw-bold">{{ cartPrice + 50 | currency : "E£" }}</h4>
-      </div>
-      <button
-        class="primary-btn w-100 fw-bold"
-        [routerLink]="['/checkout', cartProducts._id]"
-        [disabled]="cartProducts.products.length == 0"
-      >
-        Checkout Now
-      </button>
     </div>
   </div>
-</div>
+</main>
 
 <app-footer></app-footer>

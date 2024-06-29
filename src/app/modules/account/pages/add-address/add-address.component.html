@@ -1,5 +1,5 @@
 <main>
-  <h2 class="h5 fw-bolder mb-4">Edit address</h2>
+  <h2 class="h5 fw-bolder mb-4">{{ "addAddress.title" | translate }}</h2>
 
   <form class="form" [formGroup]="addressDetails" (ngSubmit)="onSubmit()">
     <div class="inputs mb-3">
@@ -9,7 +9,7 @@
             formControlName="name"
             class="w-100"
             type="text"
-            placeholder="Full name"
+            [placeholder]="'addAddress.fullName' | translate"
           />
         </div>
         <div
@@ -23,19 +23,19 @@
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('name')?.getError('required')"
           >
-            Your name is required
+            {{ "addAddress.validation.name.required" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('name')?.getError('minlength')"
           >
-            Name must be at least 3 characters.
+            {{ "addAddress.validation.name.minlength" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('name')?.getError('pattern')"
           >
-            Name can not contain special characters.
+            {{ "addAddress.validation.name.pattern" | translate }}
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@
             formControlName="details"
             class="w-100"
             type="text"
-            placeholder="Address details"
+            [placeholder]="'addAddress.addressDetails' | translate"
           />
         </div>
         <div
@@ -60,7 +60,7 @@
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('details')?.getError('required')"
           >
-            Address details is required
+            {{ "addAddress.validation.details.required" | translate }}
           </p>
         </div>
       </div>
@@ -71,7 +71,7 @@
             formControlName="city"
             class="w-100"
             type="text"
-            placeholder="City name"
+            [placeholder]="'addAddress.city' | translate"
           />
         </div>
         <div
@@ -85,7 +85,7 @@
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('city')?.getError('required')"
           >
-            City name is required
+            {{ "addAddress.validation.city.required" | translate }}
           </p>
         </div>
       </div>
@@ -96,7 +96,7 @@
             formControlName="phone"
             class="w-100"
             type="text"
-            placeholder="Phone number"
+            [placeholder]="'addAddress.phoneNumber' | translate"
           />
         </div>
         <div
@@ -110,20 +110,20 @@
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('phone')?.getError('required')"
           >
-            Phone number is required
+            {{ "addAddress.validation.phone.required" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="addressDetails.get('phone')?.getError('pattern')"
           >
-            Phone number must be Egyptian, e.g 01123456789
+            {{ "addAddress.validation.phone.pattern" | translate }}
           </p>
         </div>
       </div>
     </div>
 
     <button type="submit" class="primary-btn fw-bold fs-6">
-      Confirm address
+      {{ "addAddress.confirmButton" | translate }}
     </button>
   </form>
 </main>

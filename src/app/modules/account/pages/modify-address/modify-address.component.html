@@ -7,11 +7,26 @@
         *ngFor="let address of userAddresses"
       >
         <div class="address__details">
-          <h6><span class="fw-bold">Full name : </span>{{ address.name }}</h6>
-          <h6><span class="fw-bold">Address : </span> {{ address.details }}</h6>
-          <h6><span class="fw-bold">City : </span> {{ address.city }}</h6>
           <h6>
-            <span class="fw-bold">Phone number : </span> {{ address.phone }}
+            <span class="fw-bold"
+              >{{ "addresses.fullName" | translate }} : </span
+            >{{ address.name }}
+          </h6>
+          <h6>
+            <span class="fw-bold"
+              >{{ "addresses.address" | translate }} :
+            </span>
+            {{ address.details }}
+          </h6>
+          <h6>
+            <span class="fw-bold">{{ "addresses.city" | translate }} : </span>
+            {{ address.city }}
+          </h6>
+          <h6>
+            <span class="fw-bold"
+              >{{ "addresses.phoneNumber" | translate }} :
+            </span>
+            {{ address.phone }}
           </h6>
         </div>
 
@@ -20,13 +35,13 @@
             class="btn btn-danger text-capitalize fw-bold"
             (click)="deleteAddress(address._id)"
           >
-            delete address
+            {{ "addresses.deleteButton" | translate }}
           </button>
         </div>
       </div>
     </div>
   </div>
   <button class="primary-btn fw-bold" routerLink="/account/add-address">
-    <i class="fa-solid fa-plus"></i> Add address
+    <i class="fa-solid fa-plus"></i> {{ "addresses.addButton" | translate }}
   </button>
 </main>

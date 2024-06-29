@@ -5,19 +5,23 @@
   ></i>
   <div class="content text-center mx-3">
     <i class="fa-solid fa-shield-halved mb-4"></i>
-    <h1 class="h2 mb-2 fw-bolder">OTP Verification</h1>
-    <p>
-      Please enter the 6 digit OTP sent to <br />
-      {{ currentEmail }} to proceed.
+    <h1 class="h2 mb-2 fw-bolder" [dir]="'dir' | translate">
+      {{ "OTP.otpVerification" | translate }}
+    </h1>
+    <p [dir]="'dir' | translate">
+      {{ "OTP.otpMessage" | translate }} <br />
+      {{ currentEmail }} {{ "OTP.continueOtpMessage" | translate }}
     </p>
     <div
       class="otp mx-auto text-center d-flex flex-column justify-content-center align-items-center mb-4"
     >
       <p-inputOtp [(ngModel)]="otpValue" [length]="6" />
-      <p *ngIf="errMsg" class="text-danger mb-0 mt-2 h6">{{ errMsg }}</p>
+      <p *ngIf="errMsg" class="text-danger mb-0 mt-2 h6">
+        {{ "OTP.invalidOTP" | translate }}
+      </p>
     </div>
     <button type="submit" class="primary-btn fw-bold" (click)="submitOTP()">
-      Reset password
+      {{ "OTP.resetPassword" | translate }}
     </button>
   </div>
 </main>

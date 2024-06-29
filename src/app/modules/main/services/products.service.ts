@@ -20,7 +20,7 @@ export class ProductsService {
 
   getPaginateProducts(pageNum: number = 1): Observable<any> {
     return this._HttpClient.get(
-      environment.baseURL + `api/v1/products?page=${pageNum}&limit=12`
+      environment.baseURL + `api/v1/products?page=${pageNum}&limit=9`
     );
   }
 

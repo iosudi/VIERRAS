@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -9,13 +10,16 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnInit {
   constructor(
     private _FormBuilder: FormBuilder,
     private _AuthenticationService: AuthenticationService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {}
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   showPassword: boolean = false;
 
@@ -26,6 +30,10 @@ export class ResetPasswordComponent {
       [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*d).{8,}$/)],
     ],
   });
+
+  ngOnInit(): void {
+    this.translate.use(this.currentLanguage);
+  }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

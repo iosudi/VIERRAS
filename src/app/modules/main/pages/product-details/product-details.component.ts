@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +21,8 @@ export class ProductDetailsComponent implements OnInit {
     private _ProductsService: ProductsService,
     private _CartService: CartService,
     private toastr: ToastrService,
-    private _WishlistService: WishlistService
+    private _WishlistService: WishlistService,
+    public translate: TranslateService
   ) {}
 
   productID: string = '';
@@ -36,6 +38,8 @@ export class ProductDetailsComponent implements OnInit {
   ActiveSection: string = 'description';
   isActive: boolean = false;
   reviews: Review[] = [];
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   reviewFrom: FormGroup = new FormGroup({
     name: new FormControl(null, [
@@ -83,6 +87,8 @@ export class ProductDetailsComponent implements OnInit {
     AOS.init({
       duration: 1000,
     });
+
+    this.translate.use(this.currentLanguage);
 
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputOtpModule } from 'primeng/inputotp';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -30,6 +31,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     InputOtpModule,
     SharedModule,
     ProgressSpinnerModule,
+    TranslateModule,
   ],
 })
 export class AuthenticationModule {}

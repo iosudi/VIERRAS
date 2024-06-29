@@ -6,10 +6,8 @@ Project Description
 
 ### Todo
 
-- [ ] change shop layout  
 - [ ] fixed navbar  
 - [ ] search  
-- [ ] i18n  
 - [ ] multi currency  
 
 ### In Progress
@@ -17,6 +15,8 @@ Project Description
 
 ### Done ✓
 
+- [x] i18n  
+- [x] change shop layout  
 - [x] animations  
 - [x] move nav header to footer  
 - [x] solve cart problem  

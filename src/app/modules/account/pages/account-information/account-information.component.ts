@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { UpdateUserService } from './../../services/update-user.service';
 
@@ -12,10 +13,13 @@ import { UpdateUserService } from './../../services/update-user.service';
 export class AccountInformationComponent implements OnInit {
   constructor(
     private _UpdateUserService: UpdateUserService,
-    private _FormBuilder: FormBuilder
+    private _FormBuilder: FormBuilder,
+    private translate: TranslateService
   ) {}
 
   errMsg: string = '';
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   accountData: FormGroup = this._FormBuilder.group({
     name: [
@@ -37,6 +41,8 @@ export class AccountInformationComponent implements OnInit {
     AOS.init({
       duration: 1000,
     });
+
+    this.translate.use(this.currentLanguage);
   }
 
   onSubmit(): void {

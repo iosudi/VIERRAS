@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -16,8 +17,11 @@ export class SignInComponent implements OnInit {
     private _FormBuilder: FormBuilder,
     private _AuthenticationService: AuthenticationService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {}
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   isExpanded: boolean = false;
   isLoading: boolean = false;
@@ -38,6 +42,7 @@ export class SignInComponent implements OnInit {
     AOS.init({
       duration: 1000,
     });
+    this.translate.use(this.currentLanguage);
   }
 
   submitForm(): void {

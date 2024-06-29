@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -21,8 +22,11 @@ export class SignUpComponent implements OnInit {
     private _FormBuilder: FormBuilder,
     private _AuthenticationService: AuthenticationService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {}
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   isLoading: boolean = false;
   isExpanded: boolean = false;
@@ -59,6 +63,7 @@ export class SignUpComponent implements OnInit {
     AOS.init({
       duration: 1000,
     });
+    this.translate.use(this.currentLanguage);
   }
 
   submitForm(): void {

@@ -7,7 +7,19 @@
     "CATEGORIES": "الفئات",
     "BLOG": "المدونه",
     "CONTACT": "تواصل معنا",
-    "CART": "السلة"
+    "CART": "السلة",
+    "megaMenu": {
+      "menFashion": "موضة الرجال",
+      "clothing": "ملابس",
+      "shoes": "أحذية",
+      "accessories": "إكسسوارات",
+      "bags": "حقائب",
+      "womenFashion": "موضة النساء",
+      "electronics": "إلكترونيات",
+      "laptop": "حاسوب محمول",
+      "pc": "حاسوب مكتبي",
+      "mobile": "جوال"
+    }
   },
 
   "FOOTER": {
@@ -70,14 +82,401 @@
     "CATEGORY_PARAGRAPH": "كلام هنا المفروض يبقا كلام بس مفيش كلام."
   },
 
+  "cart": {
+    "title": "عربة التسوق",
+    "items": " منتجات ",
+    "InCart": " في عربة التسوق الخاصة بك",
+    "tableHeaders": {
+      "product": "المنتج",
+      "quantity": "الكمية",
+      "totalPrice": "السعر الإجمالي"
+    },
+    "applyCoupon": {
+      "title": "رمز الكوبون",
+      "description": "قم بتطبيق رمزك هنا لفتح توفيرات حصرية. استمتع بخصومات فورية على مشترياتك!",
+      "applyButton": "تطبيق الكوبون"
+    },
+    "summary": {
+      "summaryTitle": "ملخص",
+      "subtotal": "المجموع الفرعي",
+      "discount": "الخصم",
+      "taxes": "الضرائب المقدرة",
+      "deliveryHandling": "التوصيل والتعامل المقدر",
+      "free": "مجانا",
+      "total": "الإجمالي"
+    }
+  },
+
+  "shopPage": {
+    "mainTitle": "المتجر",
+    "categoriesFilter": {
+      "title": "الفئات"
+    },
+    "clearAll": "مسح الكل",
+    "filterBy": "تصفية حسب",
+
+    "sortBy": {
+      "title": "الترتيب حسب :",
+      "options": {
+        "popular": "الأكثر شعبية",
+        "highest": "أعلى سعر",
+        "lowest": "أقل سعر"
+      }
+    },
+
+    "pagination": {
+      "previousLabel": "السابق",
+      "nextLabel": "التالي"
+    }
+  },
+
+  "posts": {
+    "heading": {
+      "title": "أخبارنا",
+      "description": "مرحبًا بكم في مدونة VIERRAS: مصدرك النهائي للرؤى والاتجاهات في التجارة الإلكترونية"
+    },
+    "post1": {
+      "title": "أفضل 10 إكسسوارات يجب أن تمتلكها هذا الموسم",
+      "description": "اكتشف أحدث الإكسسوارات في هذا الموسم وقم برفع مستوى أناقتك باختياراتنا الخبراء."
+    },
+    "post2": {
+      "title": "كيفية تزيين منزلك بأحدث توجهات الديكور الحديثة",
+      "description": "احصل على إلهام من أحدث توجهات الديكور المنزلي وتعلم كيفية دمجها في مساحتك بسهولة."
+    },
+    "post3": {
+      "title": "الدليل النهائي للأزياء المستدامة",
+      "description": "أحدث تأثير إيجابي على البيئة مع دليلنا الشامل لممارسات الأزياء المستدامة والعلامات التجارية الصديقة للبيئة."
+    },
+    "post4": {
+      "title": "5 نصائح أساسية للتسوق الآمن عبر الإنترنت",
+      "description": "ابق محميًا أثناء التسوق عبر الإنترنت مع نصائحنا الخبيرة حول كيفية تجنب الاحتيال وضمان تجربة دفع آمنة."
+    },
+    "post5": {
+      "title": "أفضل روتين للعناية بالبشرة لكل نوع من أنواع البشرة",
+      "description": "ابحث عن تطابق بشرتك المثالي مع دليلنا الشخصي للروتينات المخصصة لأنواع البشرة العادية والجافة والدهنية والمختلطة."
+    },
+    "post6": {
+      "title": "كيفية اختيار الهدية المثالية لأي مناسبة",
+      "description": " اترك الحدس جانباً في إعطاء الهدايا مع نصائحنا الخبراء حول اختيار الهدية المثالية للأصدقاء والعائلة والأحباء."
+    },
+    "post7": {
+      "title": "أدوات التكنولوجيا التي لم تكن تعرف أنك بحاجة إليها في عام 2024",
+      "description": "ابقى في المقدمة مع ملخصنا لأحدث أدوات التكنولوجيا الابتكارية التي ستحدث ثورة في حياتك اليومية."
+    },
+    "post8": {
+      "title": "إنشاء خزانة ملابس مصغرة: مفتاح الأناقة السهلة",
+      "description": "بسط اختياراتك الأزيائية وبناء خزانة ملابس متعددة الاستخدامات مع دليلنا الخطوة بخطوة لإنشاء خزانة ملابس مصغرة."
+    },
+    "banner": {
+      "title": "أخبار مثيرة: الجهاز الجديد كليًا RTX 4090 متوفر الآن في متجرنا!",
+      "description": ""
+    }
+  },
+
+  "contact": {
+    "heading": {
+      "title": "تواصل معنا",
+      "subtitle": "أي استفسار أو ملاحظات؟ ما عليك سوى كتابة رسالة لنا!"
+    },
+    "contactBox": {
+      "contactInformation": {
+        "title": "معلومات الاتصال",
+        "startChat": "قل شيئًا لبدء محادثة مباشرة!",
+        "list": [
+          {
+            "text": "+0236416526"
+          },
+          {
+            "text": "demo@gmail.com"
+          },
+          {
+            "text": "132 شارع دارتموث، بوسطن، ماساتشوستس 02156، الولايات المتحدة الأمريكية"
+          }
+        ]
+      },
+      "form": {
+        "title": "أرسل لنا رسالة",
+        "inputs": {
+          "firstName": "الاسم الأول",
+          "lastName": "اسم العائلة",
+          "email": "البريد الإلكتروني",
+          "phone": "رقم الهاتف"
+        },
+        "subject": {
+          "title": "اختر موضوع؟",
+          "options": {
+            "label1": "استفسار عام",
+            "label2": "استفسار عام",
+            "label3": "استفسار عام",
+            "label4": "استفسار عام"
+          }
+        },
+        "message": "الرسالة",
+        "button": "إرسال الرسالة"
+      }
+    },
+    "successDialog": {
+      "title": "تم ارسال رسالتك",
+      "message": "تم إرسال رسالتك بنجاح. شكراً للتواصل معنا. سنقوم بالرد عليك قريباً.",
+      "button": "ممتاز!"
+    }
+  },
+
+  "productDetails": {
+    "freeShipping": {
+      "title": "الشحن مجاناً",
+      "description": "أدخل الرمز البريدي الخاص بك لتوافر التسليم"
+    },
+    "returnDelivery": {
+      "title": "تسليم الإرجاع",
+      "description": "توصيل مجاني لمدة 30 يومًا. ",
+      "details": "التفاصيل"
+    },
+    "reviews": {
+      "title": "التقييمات",
+      "noReviews": "لا توجد تقييمات متاحة لهذا المنتج حتى الآن.",
+      "writeReview": "كتابة تقييم",
+      "reviewForm": {
+        "title": "كتابة تقييم",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "reviewTitlePlaceHolder": "عنوان التقييم",
+        "submitButton": "إرسال التقييم"
+      }
+    },
+    "relatedProducts": {
+      "title": "منتجات ذات صلة",
+      "exploreMore": "استكشاف المزيد"
+    }
+  },
+
+  "profile": {
+    "title": "البروفايل",
+    "accountSection": {
+      "title": "حسابي",
+      "links": {
+        "accountInfo": "معلومات الحساب",
+        "changePassword": "تغيير كلمة المرور",
+        "modifyAddress": "تعديل العنوان",
+        "modifyWishlist": "تعديل قائمة الرغبات",
+        "logout": "تسجيل الخروج"
+      }
+    },
+    "ordersSection": {
+      "title": "طلباتي",
+      "links": {
+        "viewOrders": "عرض سجل الطلبات"
+      }
+    },
+    "logoutDialog": {
+      "title": "تأكيد تسجيل الخروج",
+      "message": "سوف يتم تسجيل الخروج من حسابك. إذا كنت متأكدًا من رغبتك في تسجيل الخروج، انقر على 'تسجيل الخروج' أدناه. وإلا، انقر على 'إلغاء' للبقاء مسجل الدخول.",
+      "buttons": {
+        "logout": "تسجيل الخروج",
+        "cancel": "إلغاء"
+      }
+    }
+  },
+
+  "accountInformation": {
+    "title": "معلومات الحساب",
+    "placeholders": {
+      "name": "الاسم الكامل",
+      "email": "johndoe@example.com",
+      "phone": "رقم هاتفك"
+    },
+    "labels": {
+      "applyChangesButton": "تطبيق التغييرات"
+    },
+    "validation": {
+      "name": {
+        "required": "الاسم مطلوب",
+        "minlength": "يجب أن يكون الاسم على الأقل 3 أحرف.",
+        "pattern": "لا يمكن أن يحتوي الاسم على أحرف خاصة."
+      },
+      "email": {
+        "required": "البريد الإلكتروني مطلوب",
+        "email": "البريد الإلكتروني غير صالح، على سبيل المثال، johndoe@example.com"
+      },
+      "phone": {
+        "required": "رقم الهاتف مطلوب",
+        "pattern": "يجب أن يكون رقم الهاتف مصريًا، على سبيل المثال، 01123456789"
+      }
+    }
+  },
+
+  "changePassword": {
+    "title": "تغيير كلمة المرور",
+    "placeholders": {
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور"
+    },
+    "labels": {
+      "changePasswordButton": "تغيير كلمة المرور"
+    },
+    "validation": {
+      "currentPassword": {
+        "required": "كلمة المرور الحالية مطلوبة"
+      },
+      "password": {
+        "required": "كلمة المرور الجديدة مطلوبة",
+        "pattern": "كلمة المرور يجب أن تحتوي على حرف كبير ورقم واحد على الأقل."
+      },
+      "rePassword": {
+        "required": "تأكيد كلمة المرور مطلوب",
+        "misMatch": "كلمات المرور غير متطابقة"
+      }
+    },
+    "dialog": {
+      "logoutHeader": "تسجيل الخروج",
+      "logoutMessage": "سوف يتم تسجيل الخروج من الحساب",
+      "button": "حسنا"
+    }
+  },
+
+  "addresses": {
+    "title": "عناويني",
+    "fullName": "الاسم الكامل",
+    "address": "العنوان",
+    "city": "المدينة",
+    "phoneNumber": "رقم الهاتف",
+    "deleteButton": "حذف العنوان",
+    "addButton": "إضافة عنوان"
+  },
+
+  "addAddress": {
+    "title": "إضافة عنوان",
+    "fullName": "الاسم الكامل",
+    "addressDetails": "تفاصيل العنوان",
+    "city": "اسم المدينة",
+    "phoneNumber": "رقم الهاتف",
+    "confirmButton": "تأكيد العنوان",
+
+    "validation": {
+      "name": {
+        "required": "الاسم مطلوب",
+        "minlength": "يجب أن يكون الاسم على الأقل 3 أحرف.",
+        "pattern": "لا يمكن أن يحتوي الاسم على أحرف خاصة."
+      },
+      "details": {
+        "required": "تفاصيل العنوان مطلوبة."
+      },
+      "city": {
+        "required": "اسم المدينة مطلوب."
+      },
+      "phone": {
+        "required": "رقم الهاتف مطلوب",
+        "pattern": "يجب أن يكون رقم الهاتف مصريًا، على سبيل المثال، 01123456789"
+      }
+    }
+  },
+
+  "login": {
+    "notMemberYet": "لست عضوا بعد",
+    "welcomeBack": "مرحبا بك مجدداً.",
+    "loginToAccount": "تسجيل الدخول إلى حسابك",
+    "emailAddress": "عنوان البريد الإلكتروني",
+    "yourPassword": "كلمة المرور الخاصة بك",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "termOfService": "شروط الخدمة",
+    "acknowledge": "والاعتراف ب",
+    "privacyPolicy": "سياسة الخصوصية",
+    "or": "أو",
+    "bySigningInAccept": "بتسجيل الدخول، أقبل على ideateui",
+    "signIn": "تسجيل الدخول",
+    "continueWithGoogle": "المتابعة مع جوجل",
+    "continueWithMicrosoft": "المتابعة مع مايكروسوفت",
+    "continueWithApple": "المتابعة مع آبل"
+  },
+
+  "register": {
+    "alreadyHaveAccount": "لدي حساب بالفعل",
+    "welcome": "مرحباً.",
+    "createAccount": "لنقم بإنشاء حسابك",
+    "fullName": "الاسم الكامل",
+    "emailAddress": "عنوان البريد الإلكتروني",
+    "yourPassword": "على الأقل ٨ أحرف",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "phoneNumber": "رقم هاتفك",
+    "termOfService": "شروط الخدمة",
+    "acknowledge": "والاعتراف ب",
+    "createAccountBtn": "إنشاء حساب",
+    "privacyPolicy": "سياسة الخصوصية",
+    "or": "أو",
+    "bySigningInAccept": "بتسجيل الدخول، أقبل على ideateui",
+    "continueWithGoogle": "المتابعة مع جوحل",
+    "continueWithMicrosoft": "المتابعة مع مايكروسوفت",
+    "continueWithApple": "المتابعة مع آبل",
+    "requiredName": "الاسم مطلوب",
+    "requiredEmail": "عنوان البريد الإلكتروني مطلوب",
+    "requiredPassword": "كلمة المرور مطلوبة",
+    "requiredRePassword": "تأكيد كلمة المرور مطلوب",
+    "requiredPhone": "رقم الهاتف مطلوب",
+    "invalidEmail": "صيغة البريد الإلكتروني غير صحيحة، مثال: johndoe@example.com",
+    "passwordRequirements": "كلمة المرور يجب أن تحتوي على حرف كبير ورقم واحد على الأقل.",
+    "phoneFormat": "يجب أن يكون رقم الهاتف مصريًا، مثال: 01123456789",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+  },
+
+  "forgotPassword": {
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "forgotPasswordMessage": "لا تقلق، لدينا حل لك. من فضلك أدخل بريدك الإلكتروني للحصول على رمز التحقق OTP",
+    "emailAddress": "عنوان البريد الإلكتروني",
+    "sendOTP": "إرسال رمز التحقق OTP"
+  },
+
+  "OTP": {
+    "otpVerification": "التحقق من رمز OTP",
+    "otpMessage": "الرجاء إدخال رمز OTP المكون من 6 أرقام المرسل إلى ",
+    "continueOtpMessage": " للمتابعة.",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "invalidOTP": "رمز OTP غير صالح. يرجى التحقق والمحاولة مرة أخرى."
+  },
+
+  "reset-password": {
+    "createNewPasswordHeader": "إنشاء كلمة مرور جديدة",
+    "createNewPasswordMessage": "الرجاء إدخال كلمة مرور جديدة، تأكد من أن كلمتك مختلفة عن السابقة لأمان أفضل.",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "newPasswordPlaceholder": "على الأقل 8 أحرف",
+    "confirmPasswordButton": "تأكيد كلمة المرور",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordPatternError": "يجب أن تحتوي كلمة المرور على حرف كبير واحد ورقم واحد على الأقل."
+  },
+
+  "orders": {
+    "myOrders": "طلباتي",
+    "orderID": "رقم الطلب",
+    "paid": "مدفوع",
+    "notPaid": "غير مدفوع",
+    "delivered": "تم التوصيل",
+    "notDelivered": "لم يتم التوصيل",
+    "cashPayment": "الدفع نقدًا",
+    "cardPayment": "الدفع ببطاقة الائتمان",
+    "totalItems": " عناصر"
+  },
+
+  "PLACEHOLDERS": {
+    "UR_EMAIL": "البريد الالكتروني",
+    "discountPlaceholder": "رمز الكوبون",
+    "writeMessage": "اكتب رسالتلك...",
+    "firstName": "جون",
+    "lastName": "دو",
+    "reviewName": "أدخل اسمك",
+    "reviewTitle": "اكتب عنوان التقييم الخاص بك",
+    "reviewBody": "اكتب تعليقاتك هنا"
+  },
+
   "BUTTONS": {
     "SHOP_NOW": "اشتري الان",
     "SHOW_MORE": "المزيد",
     "SEE_DETAILS": "التفاصيل",
-    "SUBSCRIBE": "اشتراك"
-  },
-
-  "PLACEHOLDERS": {
-    "UR_EMAIL": "البريد الالكتروني"
+    "SUBSCRIBE": "اشتراك",
+    "checkoutButton": "الدفع الآن",
+    "quickViewButton": "عرض سريع",
+    "addToCart": "أضف إلى السلة"
   }
 }

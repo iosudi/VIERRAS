@@ -1,4 +1,4 @@
-<div class="root">
+<main class="root" [dir]="'dir' | translate">
   <div class="container-fluid">
     <div class="row">
       <div
@@ -10,15 +10,19 @@
           <h1 class="mb-0 fw-bolder headings-font">VIERRAS</h1>
           <a routerLink="/auth/sign-in" class="mb-0 fw-bold d">
             <i class="fa-solid fa-unlock mx-2"></i>
-            <span class="border-bottom">I already have an account</span>
+            <span class="border-bottom">{{
+              "register.alreadyHaveAccount" | translate
+            }}</span>
           </a>
         </div>
         <div data-aos="fade-down" class="register-form mx-3">
           <div class="heading mb-4">
             <h2 class="fw-bolder">
-              <span class="fst-italic headings-font fw-bolder">Welcome.</span>
+              <span class="fst-italic headings-font fw-bolder">{{
+                "register.welcome" | translate
+              }}</span>
               <br />
-              Let's create your account
+              {{ "register.createAccount" | translate }}
             </h2>
           </div>
 
@@ -36,7 +40,7 @@
                     (blur)="onBlur()"
                     class="w-100"
                     type="text"
-                    placeholder="Full name"
+                    [placeholder]="'register.fullName' | translate"
                   />
                 </div>
                 <div
@@ -50,19 +54,19 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('name')?.getError('required')"
                   >
-                    Your name is required
+                    {{ "register.requiredName" | translate }}
                   </p>
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('name')?.getError('minlength')"
                   >
-                    Name must be at least 3 characters.
+                    {{ "register.nameMinlength" | translate }}
                   </p>
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('name')?.getError('pattern')"
                   >
-                    Name can not contain special characters.
+                    {{ "register.namePattern" | translate }}
                   </p>
                 </div>
               </div>
@@ -92,14 +96,14 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('email')?.getError('required')"
                   >
-                    Email address is required
+                    {{ "register.requiredEmail" | translate }}
                   </p>
 
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('email')?.getError('email')"
                   >
-                    email is invalid, e.g johndoe@example.com
+                    {{ "register.invalidEmail" | translate }}
                   </p>
                 </div>
               </div>
@@ -135,14 +139,13 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('password')?.getError('required')"
                   >
-                    Password is required
+                    {{ "register.requiredPassword" | translate }}
                   </p>
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('password')?.getError('pattern')"
                   >
-                    Password requires at least one uppercase letter and one
-                    number.
+                    {{ "register.passwordRequirements" | translate }}
                   </p>
                 </div>
               </div>
@@ -178,13 +181,13 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('rePassword')?.getError('required')"
                   >
-                    Confirm password number is required
+                    {{ "register.requiredRePassword" | translate }}
                   </p>
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('rePassword')?.getError('misMatch')"
                   >
-                    Passwords does not match
+                    {{ "register.passwordsDoNotMatch" | translate }}
                   </p>
                 </div>
               </div>
@@ -211,44 +214,49 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('phone')?.getError('required')"
                   >
-                    Phone number is required
+                    {{ "register.requiredPhone" | translate }}
                   </p>
                   <p
                     class="mb-0 px-2 text-danger"
                     *ngIf="registerForm.get('phone')?.getError('pattern')"
                   >
-                    Phone number must be Egyptian, e.g 01123456789
+                    {{ "register.phoneFormat" | translate }}
                   </p>
                 </div>
               </div>
             </div>
             <p class="fw-medium">
-              By signing up, I accept the ideateui
-              <a class="fw-bold">Term of Service</a>
-              and acknowledge <br />
-              the <a class="fw-bold">Privacy Policy</a>
+              {{ "register.bySigningInAccept" | translate }}
+              <a class="fw-bold">{{ "register.privacyPolicy" | translate }}</a>
+              {{ "register.acknowledge" | translate }} <br />
+              <a class="fw-bold">{{ "register.termOfService" | translate }}</a>
             </p>
             <button type="submit" class="primary-btn w-100 fw-bold fs-6">
-              <span *ngIf="!isLoading">Create account</span>
+              <span *ngIf="!isLoading">{{
+                "register.createAccountBtn" | translate
+              }}</span>
               <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
             </button>
           </form>
 
           <div class="spliter d-flex align-items-center gap-3 my-4">
             <div class="line"></div>
-            OR
+            {{ "register.or" | translate }}
             <div class="line"></div>
           </div>
 
           <div class="social-media">
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-google"></i> Continue with Google
+              <i class="fa-brands fa-google"></i>
+              {{ "register.continueWithGoogle" | translate }}
             </div>
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-microsoft"></i> Continue with Microsoft
+              <i class="fa-brands fa-microsoft"></i>
+              {{ "register.continueWithMicrosoft" | translate }}
             </div>
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-apple"></i> Continue with Apple
+              <i class="fa-brands fa-apple"></i>
+              {{ "register.continueWithApple" | translate }}
             </div>
           </div>
         </div>
@@ -264,4 +272,4 @@
       </div>
     </div>
   </div>
-</div>
+</main>

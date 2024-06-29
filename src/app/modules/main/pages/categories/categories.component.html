@@ -1,82 +1,93 @@
 <app-quick-view
   [ngClass]="{ 'd-flex': isQuickViewVisible, 'd-none': !isQuickViewVisible }"
 ></app-quick-view>
+<app-client-nav></app-client-nav>
 
-<div class="container-fluid root">
-  <div class="row">
-    <div class="col-md-2 px-0">
-      <nav class="side-nav h-100">
-        <div class="logo mb-2">
-          <h1 class="text-uppercase fw-bolder headings-font">vierras</h1>
-        </div>
+<main class="container mt-5 root">
+  <app-bread-crumb></app-bread-crumb>
+  <div class="main" [dir]="'dir' | translate">
+    <div class="filters px-2 py-4">
+      <div class="filter categories p-3">
+        <h4
+          class="h5 title fw-bold d-flex justify-content-between"
+          (click)="toggleFilter('categories')"
+        >
+          {{ "shopPage.categoriesFilter.title" | translate }}
 
-        <div class="categories mx-4 py-4">
-          <h4 class="h5 title fw-bold mb-4">Categories</h4>
-          <ul class="m-0">
-            <li
-              role="button"
-              class="mb-2 fw-medium"
-              [routerLink]="['/shop/categories/', category._id]"
-              *ngFor="let category of categories"
-            >
-              {{ category.name }}
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <div class="col-md-10 px-0">
-      <div class="main">
-        <app-shop-nav></app-shop-nav>
-
-        <div class="filters px-4 py-4">
-          <div class="filter categories p-3">
-            <h4
-              class="h5 title fw-bold d-flex justify-content-between"
-              (click)="toggleFilter('categories')"
-            >
-              Categories
-              <i
-                class="fa-solid fa-chevron-down"
-                [ngClass]="{
+          <i
+            class="fa-solid fa-chevron-down"
+            [ngClass]="{
                 'fa-chevron-down':!CategoryFilters,
                 'fa-chevron-up': CategoryFilters,
               }"
-              ></i>
+          ></i>
+        </h4>
+        <ul class="m-0" [class.expanded]="CategoryFilters">
+          <li
+            role="button"
+            class="mb-2 fw-semibold"
+            [routerLink]="['/shop/categories/', category._id]"
+            *ngFor="let category of categories"
+          >
+            {{ category.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="h1 title fw-bolder my-4">{{ activeCategoryName }}</h2>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="filters_nav border rounded-4 p-3">
+          <div
+            class="heading d-flex justify-content-between align-items-center border-bottom pb-2"
+          >
+            <h3 class="h4 fw-bold text-uppercase mb-0">
+              {{ "shopPage.filterBy" | translate }}
+            </h3>
+            <p class="mb-0 text-uppercase fw-medium text-danger" role="button">
+              {{ "shopPage.clearAll" | translate }}
+            </p>
+          </div>
+          <div class="categories py-4">
+            <h4 class="h5 title fw-bold mb-3">
+              {{ "shopPage.categoriesFilter.title" | translate }}
             </h4>
-            <ul class="m-0" [class.expanded]="CategoryFilters">
-              <li
-                role="button"
-                class="mb-2 fw-semibold"
-                [routerLink]="['/shop/categories/', category._id]"
-                *ngFor="let category of categories"
-              >
-                {{ category.name }}
+            <ul class="m-0 p-0">
+              <li class="mb-2 fw-medium" *ngFor="let category of categories">
+                <a [routerLink]="['/shop/categories/', category._id]">
+                  {{ category.name }}</a
+                >
               </li>
             </ul>
           </div>
         </div>
-
-        <app-bread-crumb></app-bread-crumb>
-
-        <div
-          class="header d-flex align-items-center justify-content-between px-5 pb-5"
-        >
-          <h1 class="title fw-bolder">{{ activeCategoryName }}</h1>
+      </div>
+      <div class="col-lg-9 position-relative">
+        <div class="products_layout d-flex px-5 mb-4">
           <div class="sort">
-            <h3 class="h6 mb-2">Sort by :</h3>
+            <h3 class="h6 mb-2">{{ "shopPage.sortBy.title" | translate }}</h3>
             <select class="form-control">
-              <option value="popular">Most popular</option>
-              <option value="highest">Highest price</option>
-              <option value="lowest">Lowest price</option>
+              <option value="popular">
+                {{ "shopPage.sortBy.options.popular" | translate }}
+              </option>
+              <option value="highest">
+                {{ "shopPage.sortBy.options.highest" | translate }}
+              </option>
+              <option value="lowest">
+                {{ "shopPage.sortBy.options.lowest" | translate }}
+              </option>
             </select>
           </div>
         </div>
 
         <div class="products px-5">
           <div class="row g-4">
-            <div class="col-md-3" *ngFor="let product of filteredProducts">
+            <div
+              class="col-lg-4 col-md-6"
+              *ngFor="let product of filteredProducts"
+            >
               <div
                 class="product"
                 [routerLink]="['/product-details', product.id]"
@@ -103,7 +114,7 @@
                     class="primary-btn"
                     (click)="openQuickView($event, product)"
                   >
-                    Quick View
+                    {{ "BUTTONS.quickViewButton" | translate }}
                   </button>
                 </div>
                 <div
@@ -111,7 +122,7 @@
                 >
                   <div class="product-text">
                     <p class="mb-0 fw-medium text-capitalize">
-                      from {{ product.brand.name }}
+                      {{ product.category.name }}
                     </p>
                     <h6 class="mb-2 fw-semibold">{{ product.title }}</h6>
                     <div class="rating">
@@ -144,5 +155,5 @@
       </div>
     </div>
   </div>
-</div>
+</main>
 <app-footer></app-footer>

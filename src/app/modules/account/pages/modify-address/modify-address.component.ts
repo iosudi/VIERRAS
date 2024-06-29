@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
 import { Address } from 'src/app/shared/interfaces/address';
@@ -12,15 +13,17 @@ import { UpdateUserService } from '../../services/update-user.service';
 export class ModifyAddressComponent implements OnInit {
   constructor(
     private _UpdateUserService: UpdateUserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {}
 
   userAddresses: Address[] = [];
-
+  currentLanguage: string = localStorage.getItem('language') || 'en';
   ngOnInit(): void {
     AOS.init({
       duration: 1000,
     });
+    this.translate.use(this.currentLanguage);
 
     this._UpdateUserService.getUserAddresses().subscribe((res) => {
       this.userAddresses = res.data;

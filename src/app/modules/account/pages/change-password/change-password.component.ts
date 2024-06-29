@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { UpdateUserService } from '../../services/update-user.service';
 
@@ -17,12 +18,15 @@ import { UpdateUserService } from '../../services/update-user.service';
 export class ChangePasswordComponent implements OnInit {
   constructor(
     private _UpdateUserService: UpdateUserService,
-    private _FormBuilder: FormBuilder
+    private _FormBuilder: FormBuilder,
+    private translate: TranslateService
   ) {}
 
   errMsg: string = '';
 
   visible: boolean = false;
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   passwordData: FormGroup = this._FormBuilder.group(
     {
@@ -40,6 +44,8 @@ export class ChangePasswordComponent implements OnInit {
     AOS.init({
       duration: 1000,
     });
+
+    this.translate.use(this.currentLanguage);
   }
 
   confirmPassword(formGroup: FormGroup): void {

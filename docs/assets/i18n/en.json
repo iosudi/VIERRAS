@@ -6,7 +6,19 @@
     "CATEGORIES": "Categories",
     "BLOG": "blog",
     "CONTACT": "contact",
-    "CART": "Cart"
+    "CART": "Cart",
+    "megaMenu": {
+      "menFashion": "Men Fashion",
+      "clothing": "Clothing",
+      "shoes": "Shoes",
+      "accessories": "Accessories",
+      "bags": "Bags",
+      "womenFashion": "Women Fashion",
+      "electronics": "Electronics",
+      "laptop": "Laptop",
+      "pc": "PC",
+      "mobile": "Mobile"
+    }
   },
 
   "FOOTER": {
@@ -69,14 +81,402 @@
     "CATEGORY_PARAGRAPH": "Lorem ipsum dolor sit amet."
   },
 
+  "cart": {
+    "title": "Shopping Cart",
+    "items": " items ",
+    "InCart": "in your cart",
+    "tableHeaders": {
+      "product": "Product",
+      "quantity": "Quantity",
+      "totalPrice": "Total Price"
+    },
+    "applyCoupon": {
+      "title": "Coupon Code",
+      "description": "Apply your code here to unlock exclusive savings. Enjoy immediate discounts on your purchase!",
+      "applyButton": "Apply Coupon"
+    },
+    "summary": {
+      "summaryTitle": "Summary",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "taxes": "Estimated taxes",
+      "deliveryHandling": "Estimated delivery & handling",
+      "free": "Free",
+      "total": "Total"
+    }
+  },
+
+  "shopPage": {
+    "mainTitle": "Shop",
+    "categoriesFilter": {
+      "title": "Categories"
+    },
+    "clearAll": "CLEAR ALL",
+    "filterBy": "filter By",
+    "sortBy": {
+      "title": "Sort by :",
+      "options": {
+        "popular": "Most popular",
+        "highest": "Highest price",
+        "lowest": "Lowest price"
+      }
+    },
+
+    "pagination": {
+      "previousLabel": "Previous",
+      "nextLabel": "Next"
+    }
+  },
+
+  "posts": {
+    "heading": {
+      "title": "Our News",
+      "description": "Welcome to the VIERRAS Blog: Your Ultimate Source for eCommerce Insights and Trends"
+    },
+    "post1": {
+      "title": "Top 10 Must-Have Accessories for This Season",
+      "description": "Discover the hottest accessories of the season and elevate your style with our expert picks."
+    },
+    "post2": {
+      "title": "How to Style Your Home with Modern Décor Trends",
+      "description": "Get inspired by the latest home décor trends and learn how to incorporate them into your space with ease."
+    },
+    "post3": {
+      "title": "The Ultimate Guide to Sustainable Fashion",
+      "description": "Make a positive impact on the environment with our comprehensive guide to sustainable fashion practices and eco-friendly brands."
+    },
+    "post4": {
+      "title": "5 Essential Tips for Shopping Online Safely",
+      "description": "Stay protected while shopping online with our expert advice on how to avoid scams and ensure a secure checkout experience."
+    },
+    "post5": {
+      "title": "The Best Skincare Routine for Every Skin Type",
+      "description": "Find your perfect skincare match with our personalized guide to routines for normal, dry, oily, and combination skin types."
+    },
+    "post6": {
+      "title": "How to Choose the Perfect Gift for Any Occasion",
+      "description": " Take the guesswork out of gift-giving with our expert tips on selecting the ideal present for friends, family, and loved ones."
+    },
+    "post7": {
+      "title": "Tech Gadgets You Didn't Know You Needed in 2024",
+      "description": "Stay ahead of the curve with our roundup of innovative tech gadgets that will revolutionize your daily life."
+    },
+    "post8": {
+      "title": "Creating a Capsule Wardrobe: The Key to Effortless Style",
+      "description": "Streamline your fashion choices and build a versatile wardrobe with our step-by-step guide to creating a capsule wardrobe."
+    },
+    "banner": {
+      "title": "Exciting News: The All-New RTX 4090 is Now Available in Our Store!",
+      "description": ""
+    }
+  },
+
+  "contact": {
+    "heading": {
+      "title": "Contact Us",
+      "subtitle": "Any question or remarks? Just write us a message!"
+    },
+    "contactBox": {
+      "contactInformation": {
+        "title": "Contact Information",
+        "startChat": "Say something to start a live chat!",
+        "list": [
+          {
+            "text": "+0236416526"
+          },
+          {
+            "text": "demo@gmail.com"
+          },
+          {
+            "text": "132 Dartmouth Street Boston, Massachusetts 02156 United States"
+          }
+        ]
+      },
+      "form": {
+        "title": "Send Us a Message",
+        "inputs": {
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "email": "Email",
+          "phone": "Phone Number"
+        },
+        "subject": {
+          "title": "Select Subject?",
+          "options": {
+            "label1": "General Inquiry",
+            "label2": "General Inquiry",
+            "label3": "General Inquiry",
+            "label4": "General Inquiry"
+          }
+        },
+        "message": "Message",
+        "button": "Send Message"
+      }
+    },
+    "successDialog": {
+      "title": "Success",
+      "message": "Your message has been sent successfully. Thank you for contacting us. We will get back to you shortly.",
+      "button": "Great!"
+    }
+  },
+
+  "productDetails": {
+    "freeShipping": {
+      "title": "Free Shipping",
+      "description": "Enter your postal code for Delivery Availability"
+    },
+    "returnDelivery": {
+      "title": "Return Delivery",
+      "description": "Free 30 Days Delivery Returns. Details",
+      "details": "Details "
+    },
+    "reviews": {
+      "title": "Reviews",
+      "noReviews": "No reviews available for this product yet.",
+      "writeReview": "Write a Review",
+      "reviewForm": {
+        "title": "Write a Review",
+        "name": "Name",
+        "email": "Email",
+        "reviewTitle": "Review Title",
+        "submitButton": "Submit review"
+      }
+    },
+    "relatedProducts": {
+      "title": "Related Products",
+      "exploreMore": "Explore more"
+    }
+  },
+
+  "profile": {
+    "title": "My profile",
+    "accountSection": {
+      "title": "My account",
+      "links": {
+        "accountInfo": "Account information",
+        "changePassword": "Change password",
+        "modifyAddress": "Modify address",
+        "modifyWishlist": "Modify wishlist",
+        "logout": "Logout"
+      }
+    },
+    "ordersSection": {
+      "title": "My orders",
+      "links": {
+        "viewOrders": "View orders history"
+      }
+    },
+    "logoutDialog": {
+      "title": "Log Out Confirmation",
+      "message": "You will be logged out of your account. If you're sure you want to log out, click 'Log Out' below. Otherwise, click 'Cancel' to stay logged in.",
+      "buttons": {
+        "logout": "Log Out",
+        "cancel": "Cancel"
+      }
+    }
+  },
+
+  "accountInformation": {
+    "title": "Account information",
+    "placeholders": {
+      "name": "Full name",
+      "email": "john@example.com",
+      "phone": "Your phone number"
+    },
+    "labels": {
+      "applyChangesButton": "Apply Changes"
+    },
+    "validation": {
+      "name": {
+        "required": "Your name is required",
+        "minlength": "Name must be at least 3 characters.",
+        "pattern": "Name cannot contain special characters."
+      },
+      "email": {
+        "required": "Email address is required",
+        "email": "Email is invalid, e.g., johndoe@example.com"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "pattern": "Phone number must be Egyptian, e.g., 01123456789"
+      }
+    }
+  },
+
+  "changePassword": {
+    "title": "Change password",
+    "placeholders": {
+      "currentPassword": "Current Password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password"
+    },
+    "labels": {
+      "changePasswordButton": "Change password"
+    },
+    "validation": {
+      "currentPassword": {
+        "required": "Current password is required"
+      },
+      "password": {
+        "required": "New password is required",
+        "pattern": "Password requires at least one uppercase letter and one number."
+      },
+      "rePassword": {
+        "required": "Confirm password is required",
+        "misMatch": "Passwords do not match"
+      }
+    },
+    "dialog": {
+      "logoutHeader": "Account logout",
+      "logoutMessage": "You're going to be logged out",
+      "button": "Ok"
+    }
+  },
+
+  "addresses": {
+    "title": "My Addresses",
+    "fullName": "Full name",
+    "address": "Address",
+    "city": "City",
+    "phoneNumber": "Phone number",
+    "deleteButton": "Delete address",
+    "addButton": "Add address"
+  },
+
+  "addAddress": {
+    "title": "Add address",
+    "fullName": "Full name",
+    "addressDetails": "Address details",
+    "city": "City name",
+    "phoneNumber": "Phone number",
+    "confirmButton": "Confirm address",
+
+    "validation": {
+      "name": {
+        "required": "Your name is required",
+        "minlength": "Name must be at least 3 characters.",
+        "pattern": "Name cannot contain special characters."
+      },
+      "details": {
+        "required": "Address details is required"
+      },
+      "city": {
+        "required": "City name is required"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "pattern": "Phone number must be Egyptian, e.g., 01123456789"
+      }
+    }
+  },
+
+  "orders": {
+    "myOrders": "My orders",
+    "orderID": "Order ID",
+    "paid": "Paid",
+    "notPaid": "Not Paid",
+    "delivered": "Delivered",
+    "notDelivered": "Not Delivered",
+    "cashPayment": "Cash Payment",
+    "cardPayment": "Card Payment",
+    "totalItems": " items"
+  },
+
+  "login": {
+    "notMemberYet": "Not a member yet",
+    "welcomeBack": "Welcome back.",
+    "loginToAccount": "Login to your account",
+    "emailAddress": "Email address",
+    "yourPassword": "Your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "termOfService": "Term of Service",
+    "acknowledge": "and acknowledge the",
+    "privacyPolicy": "Privacy Policy",
+    "signIn": "Log in",
+    "or": "OR",
+    "bySigningInAccept": "By signing in, I accept the ideateui",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithMicrosoft": "Continue with Microsoft",
+    "continueWithApple": "Continue with Apple"
+  },
+
+  "register": {
+    "alreadyHaveAccount": "I already have an account",
+    "welcome": "Welcome.",
+    "createAccount": "Let's create your account",
+    "fullName": "Full name",
+    "emailAddress": "Email address",
+    "yourPassword": "At least 8 characters",
+    "confirmPassword": "Confirm your password",
+    "phoneNumber": "Your phone number",
+    "termOfService": "Term of Service",
+    "acknowledge": "and acknowledge the",
+    "privacyPolicy": "Privacy Policy",
+    "or": "OR",
+    "bySigningInAccept": "By signing in, I accept the ideateui",
+    "createAccountBtn": "Create account",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithMicrosoft": "Continue with Microsoft",
+    "continueWithApple": "Continue with Apple",
+    "requiredName": "Name is required",
+    "requiredEmail": "Email address is required",
+    "requiredPassword": "Password is required",
+    "requiredRePassword": "Confirm password is required",
+    "requiredPhone": "Phone number is required",
+    "nameMinlength": "Name must be at least 3 characters.",
+    "namePattern": "Name cannot contain special characters.",
+    "invalidEmail": "Invalid email format, e.g., johndoe@example.com",
+    "passwordRequirements": "Password requires at least one uppercase letter and one number.",
+    "phoneFormat": "Phone number must be Egyptian, e.g., 01123456789",
+    "passwordsDoNotMatch": "Passwords do not match"
+  },
+
+  "forgotPassword": {
+    "forgotPassword": "Forgot Password?",
+    "forgotPasswordMessage": "Don't worry we got you covered, Please enter your email to get OTP verification code",
+    "emailAddress": "Email address",
+    "sendOTP": "Send OTP"
+  },
+
+  "OTP": {
+    "otpVerification": "OTP Verification",
+    "otpMessage": "Please enter the 6-digit OTP sent to ",
+    "continueOtpMessage": "to proceed.",
+    "resetPassword": "Reset password",
+    "invalidOTP": "Invalid OTP. Please check and try again."
+  },
+
+  "reset-password": {
+    "createNewPasswordHeader": "Create New Password",
+    "createNewPasswordMessage": "Please enter a new password, Ensure that your password is different from the previous one for better security.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "newPasswordLabel": "New Password",
+    "newPasswordPlaceholder": "At least 8 characters",
+    "confirmPasswordButton": "Confirm password",
+    "passwordRequired": "Password is required",
+    "passwordPatternError": "Password requires at least one uppercase letter and one number."
+  },
+
+  "PLACEHOLDERS": {
+    "UR_EMAIL": "Your email",
+    "discountPlaceholder": "Coupon Code",
+    "writeMessage": "Write your message...",
+    "firstName": "John",
+    "lastName": "Doe",
+    "reviewName": "Enter your name",
+    "reviewTitle": "Write your review title",
+    "reviewBody": "Write your comments here"
+  },
+
   "BUTTONS": {
     "SHOP_NOW": "Shop now",
     "SHOW_MORE": "Show more",
     "SEE_DETAILS": "See details",
-    "SUBSCRIBE": "Subscribe"
-  },
-
-  "PLACEHOLDERS": {
-    "UR_EMAIL": "Your email"
+    "SUBSCRIBE": "Subscribe",
+    "checkoutButton": "Checkout Now",
+    "quickViewButton": "Quick View",
+    "addToCart": "add to cart"
   }
 }

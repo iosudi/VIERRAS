@@ -1,4 +1,4 @@
-<div class="root">
+<div class="root" [dir]="'dir' | translate">
   <div class="container-fluid">
     <div class="row">
       <div
@@ -10,17 +10,19 @@
           <h1 class="mb-0 fw-bolder headings-font">VIERRAS</h1>
           <a routerLink="/auth/sign-up" class="mb-0 fw-bold d">
             <i class="fa-solid fa-lock mx-2"></i>
-            <span class="border-bottom">Not a member yet</span>
+            <span class="border-bottom">{{
+              "login.notMemberYet" | translate
+            }}</span>
           </a>
         </div>
         <div data-aos="fade-down" class="login-form mx-3">
           <div class="heading mb-4">
             <h2 class="fw-bolder">
-              <span class="fst-italic headings-font fw-bolder"
-                >Welcome back.</span
-              >
+              <span class="fst-italic headings-font fw-bolder">{{
+                "login.welcomeBack" | translate
+              }}</span>
               <br />
-              Login to your account
+              {{ "login.loginToAccount" | translate }}
             </h2>
           </div>
 
@@ -33,7 +35,7 @@
                     formControlName="email"
                     class="w-100"
                     type="email"
-                    placeholder="Email address"
+                    [placeholder]="'login.emailAddress' | translate"
                   />
                 </div>
               </div>
@@ -46,7 +48,7 @@
                     formControlName="password"
                     class="w-100"
                     [type]="showPassword ? 'text' : 'password'"
-                    placeholder="Your password"
+                    [placeholder]="'login.yourPassword' | translate"
                   />
                   <i
                     role="button"
@@ -66,42 +68,47 @@
             <div class="toggle__options my-2 d-flex justify-content-between">
               <span class="check__box d-flex align-items-center gap-1">
                 <p-checkbox inputId="rm" value="Remember me" />
-                <label for="rm" class="fw-semibold">Remember me</label></span
+                <label for="rm" class="fw-semibold">{{
+                  "login.rememberMe" | translate
+                }}</label></span
               >
-              <a routerLink="/auth/forgot-password" class="fw-semibold"
-                >Forgot password?</a
-              >
+              <a routerLink="/auth/forgot-password" class="fw-semibold">{{
+                "login.forgotPassword" | translate
+              }}</a>
             </div>
             <p class="fw-medium">
-              By signing in, I accept the ideateui
-              <a class="fw-bold">Term of Service</a>
-              and acknowledge <br />
-              the <a class="fw-bold">Privacy Policy</a>
+              {{ "login.bySigningInAccept" | translate }}
+              <a class="fw-bold">{{ "login.privacyPolicy" | translate }}</a>
+              {{ "login.acknowledge" | translate }}<br />
+              <a class="fw-bold">{{ "login.termOfService" | translate }}</a>
             </p>
             <button
               class="primary-btn w-100 fw-bold fs-6"
               (click)="submitForm()"
             >
-              <span *ngIf="!isLoading">Log in</span>
+              <span *ngIf="!isLoading"> {{ "login.signIn" | translate }} </span>
               <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
             </button>
           </form>
 
           <div class="spliter d-flex align-items-center gap-3 my-4">
             <div class="line"></div>
-            OR
+            {{ "login.or" | translate }}
             <div class="line"></div>
           </div>
 
           <div class="social-media">
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-google"></i> Continue with Google
+              <i class="fa-brands fa-google"></i>
+              {{ "login.continueWithGoogle" | translate }}
             </div>
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-microsoft"></i> Continue with Microsoft
+              <i class="fa-brands fa-microsoft"></i>
+              {{ "login.continueWithMicrosoft" | translate }}
             </div>
             <div class="option w-100 fw-semibold mb-3 py-2">
-              <i class="fa-brands fa-apple"></i> Continue with Apple
+              <i class="fa-brands fa-apple"></i>
+              {{ "login.continueWithApple" | translate }}
             </div>
           </div>
         </div>

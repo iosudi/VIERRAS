@@ -53,6 +53,11 @@ footer {
             font-weight: 500;
             border: 0;
             outline: 0;
+            transition: 0.3s;
+            &:hover {
+              color: var(--brand-color);
+              text-decoration: underline;
+            }
           }
         }
       }

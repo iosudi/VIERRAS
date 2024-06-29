@@ -50,10 +50,7 @@ export class FooterComponent {
 
   saveRegionalSettings() {
     const selectedLanguage = this.languageSelect.nativeElement.value;
-    console.log(
-      '🚀 ~ FooterComponent ~ saveRegionalSettings ~ selectedLanguage:',
-      selectedLanguage
-    );
+
     const selectedCurrency = this.currencySelect.nativeElement.value;
     const body = document.body;
 

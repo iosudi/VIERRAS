@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -8,16 +9,23 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss'],
 })
-export class OtpComponent {
+export class OtpComponent implements OnInit {
   constructor(
     private _AuthenticationService: AuthenticationService,
-    private _router: Router
+    private _router: Router,
+    private translate: TranslateService
   ) {}
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   currentEmail: string = localStorage.getItem('userEmail') || '';
 
   otpValue: string = '';
   errMsg: string = '';
+
+  ngOnInit(): void {
+    this.translate.use(this.currentLanguage);
+  }
   submitOTP() {
     this._AuthenticationService.verifyOTP(this.otpValue).subscribe({
       next: (res) => {

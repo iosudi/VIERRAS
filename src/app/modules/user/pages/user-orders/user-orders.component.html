@@ -1,6 +1,8 @@
 <app-client-nav></app-client-nav>
-<main class="px-5 m-5">
-  <h1 class="text-capitalize mb-4 fw-bolder">My orders</h1>
+<main [dir]="'dir' | translate" class="px-5 m-5">
+  <h1 class="text-capitalize mb-4 fw-bolder">
+    {{ "orders.myOrders" | translate }}
+  </h1>
   <div class="orders">
     <div class="row g-4">
       <div class="col-lg-6" *ngFor="let order of userOrdersInfo">
@@ -9,7 +11,7 @@
             class="order-info d-flex justify-content-between align-items-center gap-3 mb-4"
           >
             <div class="order-id">
-              <h4 class="h6 mb-1">Order ID</h4>
+              <h4 class="h6 mb-1">{{ "orders.orderID" | translate }}</h4>
               <p class="mb-0 fw-bold h5">#{{ order.id }}</p>
             </div>
 
@@ -18,37 +20,37 @@
                 class="chip mb-0 fw-medium text-capitalize paid"
                 *ngIf="order.isPaid"
               >
-                Paid
+                {{ "orders.paid" | translate }}
               </p>
               <p
                 class="chip mb-0 fw-medium text-capitalize not_paid"
                 *ngIf="!order.isPaid"
               >
-                Not Paid
+                {{ "orders.notPaid" | translate }}
               </p>
               <p
                 class="chip mb-0 fw-medium text-capitalize Delivered"
                 *ngIf="order.isDelivered"
               >
-                Delivered
+                {{ "orders.delivered" | translate }}
               </p>
               <p
                 class="chip mb-0 fw-medium text-capitalize notDelivered"
                 *ngIf="!order.isDelivered"
               >
-                Not Delivered
+                {{ "orders.notDelivered" | translate }}
               </p>
               <p
                 class="chip mb-0 fw-medium text-capitalize cash"
                 *ngIf="order.paymentMethodType == 'cash'"
               >
-                Cash Payment
+                {{ "orders.cashPayment" | translate }}
               </p>
               <p
                 class="chip mb-0 fw-medium text-capitalize Card"
                 *ngIf="order.paymentMethodType == 'card'"
               >
-                Card Payment
+                {{ "orders.cardPayment" | translate }}
               </p>
             </div>
           </div>
@@ -82,7 +84,8 @@
               {{ order.totalOrderPrice | currency : "E£" }}
             </p>
             <p class="count mb-0 fw-semibold">
-              ( {{ order.cartItems.length }} ) items
+              ( {{ order.cartItems.length }} )
+              {{ "orders.totalItems" | translate }}
             </p>
           </div>
         </div>

@@ -133,8 +133,10 @@
                   <button
                     class="primary-btn px-3"
                     (click)="addToCart($event, product.id)"
+                    [dir]="'dir' | translate"
                   >
-                    Add to Cart <i class="fa-solid fa-shopping-cart mx-1"></i>
+                    {{ "BUTTONS.addToCart" | translate }}
+                    <i class="fa-solid fa-shopping-cart mx-1"></i>
                   </button>
 
                   <button
@@ -147,7 +149,7 @@
               </div>
               <div class="product-text d-flex flex-column gap-1">
                 <p class="mb-0 fw-medium text-capitalize">
-                  from {{ product.brand.name }}
+                  {{ product.category.name }}
                 </p>
                 <h6 class="mb-0">{{ product.title }}</h6>
                 <div class="rating">

@@ -1,12 +1,13 @@
 <app-client-nav></app-client-nav>
 <main>
-  <div class="container-fluid">
+  <div class="container-fluid" [dir]="'dir' | translate">
     <div class="hero" data-aos="fade-down">
       <div class="container">
-        <h1 class="fw-bolder text-center mb-4">Our News</h1>
+        <h1 class="fw-bolder text-center mb-4">
+          {{ "posts.heading.title" | translate }}
+        </h1>
         <p class="fw-medium text-center mb-5">
-          Welcome to the VIERRAS Blog: Your Ultimate Source for eCommerce
-          Insights and Trends
+          {{ "posts.heading.description" | translate }}
         </p>
 
         <div class="blog_banner">

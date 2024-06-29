@@ -46,7 +46,11 @@ body {
 }
 
 body.ar {
-  font-family: var(--ar-body-font);
+  font-family: var(--ar-body-font) !important;
+
+  &.dialog {
+    font-family: var(--ar-body-font) !important;
+  }
 }
 
 a {
@@ -72,10 +76,6 @@ img {
   font-family: var(--heading-font);
 }
 
-body.ar .headings-font {
-  font-family: var(--ar-body-font);
-}
-
 .transparent-text {
   background: linear-gradient(
     to right,
@@ -97,7 +97,7 @@ body.ar .headings-font {
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 10px 30px;
+  padding: 10px 25px;
   border-radius: 10px;
   border: 0;
   outline: 0;
@@ -112,6 +112,26 @@ body.ar .headings-font {
       box-shadow: none !important;
       transform: scale(1) !important;
     }
+  }
+}
+
+.input_field {
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  border-radius: 10px;
+  padding: 12px 20px;
+  outline: none;
+  font-weight: 600;
+  &:focus {
+    border: 1px solid var(--brand-color);
+  }
+
+  &::placeholder {
+    font-weight: 500;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

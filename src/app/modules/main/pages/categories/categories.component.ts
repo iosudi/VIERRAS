@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
@@ -20,7 +21,8 @@ export class CategoriesComponent implements OnInit {
     private _WishlistService: WishlistService,
     private _ActivatedRoute: ActivatedRoute,
     private renderer: Renderer2,
-    private _VisibilityService: VisibilityService
+    private _VisibilityService: VisibilityService,
+    public translate: TranslateService
   ) {}
 
   categories: Category[] = [];
@@ -39,6 +41,8 @@ export class CategoriesComponent implements OnInit {
 
   isQuickViewVisible: boolean = false;
 
+  currentLanguage: string = localStorage.getItem('language') || 'en';
+
   ngOnInit() {
     this._ProductsService.getCategories().subscribe({
       next: (res) => {
@@ -48,6 +52,8 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
     });
+
+    this.translate.use(this.currentLanguage);
 
     this._ProductsService.getAllProducts().subscribe({
       next: (res) => {

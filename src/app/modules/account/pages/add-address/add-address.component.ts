@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { UpdateUserService } from '../../services/update-user.service';
 
@@ -10,16 +11,18 @@ import { UpdateUserService } from '../../services/update-user.service';
   templateUrl: './add-address.component.html',
   styleUrls: ['./add-address.component.scss'],
 })
-export class AddAddressComponent {
+export class AddAddressComponent implements OnInit {
   constructor(
     private _UpdateUserService: UpdateUserService,
     private _FormBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {}
 
   errMsg: string = '';
   addressId: string = '';
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   addressDetails: FormGroup = this._FormBuilder.group({
     name: [
@@ -37,6 +40,10 @@ export class AddAddressComponent {
       [Validators.required, Validators.pattern(/^(010|011|012|015)\d{8}$/)],
     ],
   });
+
+  ngOnInit(): void {
+    this.translate.use(this.currentLanguage);
+  }
 
   onSubmit(): void {
     if (this.addressDetails.status == 'VALID') {

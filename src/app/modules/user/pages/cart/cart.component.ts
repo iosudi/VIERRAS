@@ -1,9 +1,15 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
-import { Products } from 'src/app/modules/main/interfaces/products';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { WishlistService } from 'src/app/shared/services/wishlist.service';
+import { DiscountService } from '../../services/discount.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,35 +17,36 @@ import { WishlistService } from 'src/app/shared/services/wishlist.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+  @ViewChild('couponInput') couponInput!: ElementRef;
+  @ViewChild('couponBtn') couponBtn!: ElementRef;
+
   constructor(
     private _CartService: CartService,
     private _Renderer2: Renderer2,
     private toastr: ToastrService,
-    private _WishlistService: WishlistService
+    private _DiscountService: DiscountService,
+    public translate: TranslateService
   ) {}
   cartProducts!: any;
   cartPrice: number = 0;
-
-  wishListProducts: Products[] = [];
+  coupon: string = '';
+  discountedPrice: number = 0;
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   ngOnInit(): void {
     AOS.init({
       duration: 1000,
     });
 
+    this.translate.use(this.currentLanguage);
+
     this._CartService.getCart().subscribe({
       next: (res) => {
         this.cartProducts = res.data;
-        this.cartPrice = res.data.totalCartPrice;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-
-    this._WishlistService.getWishlist().subscribe({
-      next: (res) => {
-        this.wishListProducts = res.data.map((product: Products) => product.id);
+        this.cartPrice = this._DiscountService.applyDiscount(
+          res.data.totalCartPrice,
+          this.coupon
+        );
       },
       error: (err) => {
         console.log(err);
@@ -105,34 +112,25 @@ export class CartComponent implements OnInit {
     });
     this._Renderer2.setAttribute(removeBtn, 'disabled', 'false');
   }
-
-  addToWishlist(productId: string): void {
-    this._WishlistService.addToWishlist(productId).subscribe({
-      next: (res) => {
-        if (res.status === 'success') {
-          this.wishListProducts = res.data;
-          this.toastr.success('Product added successfully');
-          this._WishlistService.wishlistItems.next(res.data.length);
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  removeFromWishlist(productId: string): void {
-    this._WishlistService.removeFromWishlist(productId).subscribe({
-      next: (res) => {
-        if (res.status === 'success') {
-          this.wishListProducts = res.data;
-          this.toastr.success('Product removed successfully');
-          this._WishlistService.wishlistItems.next(res.data.length);
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  applyCoupon(): void {
+    if ((this, this.coupon !== '')) {
+      this.cartPrice = this._DiscountService.applyDiscount(
+        this.cartPrice,
+        this.coupon
+      );
+      this._Renderer2.setAttribute(
+        this.couponInput.nativeElement,
+        'disabled',
+        'true'
+      );
+      this._Renderer2.setAttribute(
+        this.couponBtn.nativeElement,
+        'disabled',
+        'true'
+      );
+      this.discountedPrice = this._DiscountService.discountedPrice;
+      this.toastr.success('Coupon applied successfully.');
+      console.log('hello');
+    }
   }
 }

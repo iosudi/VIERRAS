@@ -7,6 +7,7 @@ nav {
     .nav-controllers {
       .nav-items {
         position: relative;
+        transition: 0.5;
         .mega-menu {
           z-index: 5;
           position: absolute;
@@ -19,6 +20,12 @@ nav {
           li {
             font-weight: 500;
             margin: 10px 0;
+          }
+        }
+
+        li:hover {
+          a {
+            color: var(--brand-color);
           }
         }
       }
@@ -50,6 +57,11 @@ nav {
 
 app-phone-nav {
   display: none; /* Hide by default */
+}
+
+.active_link {
+  color: var(--brand-color) !important;
+  font-weight: 800 !important;
 }
 
 .search__overlay {

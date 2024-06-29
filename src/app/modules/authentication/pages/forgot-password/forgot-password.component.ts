@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -9,18 +10,25 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
 })
-export class ForgotPasswordComponent {
+export class ForgotPasswordComponent implements OnInit {
   constructor(
     private _FormBuilder: FormBuilder,
     private _AuthenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {}
+
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   errMsg: string = '';
 
   userEmail: FormGroup = this._FormBuilder.group({
     email: [null, Validators.required],
   });
+
+  ngOnInit(): void {
+    this.translate.use(this.currentLanguage);
+  }
 
   submitForm(): void {
     if (this.userEmail.value.email !== null) {

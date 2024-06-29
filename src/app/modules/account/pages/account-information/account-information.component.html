@@ -1,5 +1,7 @@
 <main data-aos="fade-down" data-aos-offset="40">
-  <h2 class="h5 fw-bolder mb-4">Account information</h2>
+  <h2 class="h5 fw-bolder mb-4">
+    {{ "accountInformation.title" | translate }}
+  </h2>
 
   <form class="form" [formGroup]="accountData" (ngSubmit)="onSubmit()">
     <div class="inputs mb-3">
@@ -9,7 +11,7 @@
             formControlName="name"
             class="w-100"
             type="text"
-            placeholder="Full name"
+            [placeholder]="'accountInformation.placeholders.name' | translate"
           />
         </div>
         <div
@@ -22,19 +24,19 @@
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('name')?.getError('required')"
           >
-            Your name is required
+            {{ "accountInformation.validation.name.required" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('name')?.getError('minlength')"
           >
-            Name must be at least 3 characters.
+            {{ "accountInformation.validation.name.minlength" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('name')?.getError('pattern')"
           >
-            Name can not contain special characters.
+            {{ "accountInformation.validation.name.pattern" | translate }}
           </p>
         </div>
       </div>
@@ -62,14 +64,14 @@
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('email')?.getError('required')"
           >
-            Email address is required
+            {{ "accountInformation.validation.email.required" | translate }}
           </p>
 
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('email')?.getError('email')"
           >
-            email is invalid, e.g johndoe@example.com
+            {{ "accountInformation.validation.email.email" | translate }}
           </p>
         </div>
       </div>
@@ -80,7 +82,7 @@
             formControlName="phone"
             class="w-100"
             type="text"
-            placeholder="Your phone number"
+            [placeholder]="'accountInformation.placeholders.phone' | translate"
           />
         </div>
         <div
@@ -94,20 +96,20 @@
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('phone')?.getError('required')"
           >
-            Phone number is required
+            {{ "accountInformation.validation.phone.required" | translate }}
           </p>
           <p
             class="mb-0 px-2 text-danger"
             *ngIf="accountData.get('phone')?.getError('pattern')"
           >
-            Phone number must be Egyptian, e.g 01123456789
+            {{ "accountInformation.validation.phone.pattern" | translate }}
           </p>
         </div>
       </div>
     </div>
 
     <button type="submit" class="primary-btn fw-bold fs-6">
-      Apply Changes
+      {{ "accountInformation.labels.applyChangesButton" | translate }}
     </button>
   </form>
 </main>

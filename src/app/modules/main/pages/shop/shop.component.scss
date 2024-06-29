@@ -1,33 +1,20 @@
-.root {
-  .side-nav {
-    border-right: 1px solid var(--border-color);
-
-    .logo {
-      padding: 49.5px 15%;
-      border-bottom: 1px solid var(--border-color);
-      color: var(--brand-color);
-    }
-
-    .categories {
-      border-bottom: 1px solid var(--border-color);
-      ul li {
-        color: var(--paragraph-color);
-      }
-    }
-  }
-
+main {
   .main {
     .filters {
       display: none;
     }
 
+    .filters_nav {
+      box-shadow: 5px 10px 20px 1px var(--shadow-color);
+    }
+
     .products {
       .product {
         border: 1px solid var(--border-color);
-        border-radius: 30px;
+        border-radius: 20px;
         overflow: hidden;
         .image {
-          height: 400px;
+          height: 250px;
           border-bottom: 1px solid var(--border-color);
           overflow: hidden;
           i {
@@ -82,63 +69,39 @@
   }
 }
 
-@media (max-width: 1382px) {
-  .root {
-    .side-nav {
-      .logo {
-        padding: 52.5px 10%;
-        h1 {
-          font-size: 35px !important;
-        }
-      }
-
-      .categories {
-        border-bottom: 1px solid var(--border-color);
-        ul li {
-          color: var(--paragraph-color);
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1127px) {
-  .root {
-    .side-nav {
-      display: none;
-    }
-
-    .col-md-10 {
-      width: 100%;
-      .main {
-        .filters {
-          display: block;
-          .filter {
-            background: var(--darken-background);
+@media (max-width: 991px) {
+  main {
+    .main {
+      .filters {
+        display: block;
+        .filter {
+          background: var(--darken-background);
+          border-radius: 20px;
+          ul {
+            padding: 0px 20px;
+            max-height: 0;
             border-radius: 20px;
-            ul {
-              padding: 0px 20px;
-              max-height: 0;
-              border-radius: 20px;
-              overflow: hidden;
-              background-color: var(--lighten-background);
-              transition: 0.5s;
-              &.expanded {
-                max-height: 300px;
-                padding: 10px 20px;
-              }
+            overflow: hidden;
+            background-color: var(--lighten-background);
+            transition: 0.5s;
+            &.expanded {
+              max-height: 300px;
+              padding: 10px 20px;
             }
           }
         }
+      }
+      .col-lg-3 {
+        display: none;
       }
     }
   }
 }
 
 @media (max-width: 380px) {
-  .root {
+  main {
     .main {
-      .header {
+      .products_layout {
         padding: 10px 20px !important;
       }
 
