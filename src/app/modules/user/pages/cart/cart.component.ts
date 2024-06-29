@@ -113,24 +113,34 @@ export class CartComponent implements OnInit {
     this._Renderer2.setAttribute(removeBtn, 'disabled', 'false');
   }
   applyCoupon(): void {
-    if ((this, this.coupon !== '')) {
-      this.cartPrice = this._DiscountService.applyDiscount(
+    if (this.coupon !== '') {
+      const discountedPrice = this._DiscountService.applyDiscount(
         this.cartPrice,
         this.coupon
       );
-      this._Renderer2.setAttribute(
-        this.couponInput.nativeElement,
-        'disabled',
-        'true'
+      console.log(
+        '🚀 ~ CartComponent ~ applyCoupon ~ discountedPrice:',
+        discountedPrice
       );
-      this._Renderer2.setAttribute(
-        this.couponBtn.nativeElement,
-        'disabled',
-        'true'
-      );
-      this.discountedPrice = this._DiscountService.discountedPrice;
-      this.toastr.success('Coupon applied successfully.');
-      console.log('hello');
+
+      if (discountedPrice !== 0) {
+        this.cartPrice = this._DiscountService.applyDiscount(
+          this.cartPrice,
+          this.coupon
+        );
+        this._Renderer2.setAttribute(
+          this.couponInput.nativeElement,
+          'disabled',
+          'true'
+        );
+        this._Renderer2.setAttribute(
+          this.couponBtn.nativeElement,
+          'disabled',
+          'true'
+        );
+        this.discountedPrice = this._DiscountService.discountedPrice;
+        this.toastr.success('Coupon applied successfully.');
+      }
     }
   }
 }

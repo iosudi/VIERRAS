@@ -69,6 +69,36 @@ main {
   }
 }
 
+.filters_nav.fixed {
+  position: fixed;
+  top: 120px;
+  width: 16.3%;
+}
+
+.filters_nav.stop {
+  position: absolute;
+  bottom: 0px;
+  width: 93%;
+}
+
+@media (max-width: 1399px) {
+  .filters_nav.fixed {
+    width: 19.3%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .container {
+    max-width: 1100px;
+    .filters_nav.fixed {
+      width: 22%;
+    }
+    .products {
+      padding: 0 15px !important;
+    }
+  }
+}
+
 @media (max-width: 991px) {
   main {
     .main {

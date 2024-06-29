@@ -1,5 +1,6 @@
 nav {
   margin: 0;
+  transition: 0.5s;
   .container-fluid {
     padding: 0;
     margin: 0;
@@ -64,6 +65,16 @@ app-phone-nav {
   font-weight: 800 !important;
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  backdrop-filter: blur(25px);
+  margin: 15px 10%;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 15px;
+}
+
 .search__overlay {
   position: fixed;
   top: -100%;
@@ -111,6 +122,12 @@ app-phone-nav {
   }
 }
 
+@media (max-width: 1356px) {
+  .fixed-top {
+    margin: 15px 5% !important;
+  }
+}
+
 @media (max-width: 1232px) {
   nav {
     .container-fluid {
@@ -137,6 +154,12 @@ app-phone-nav {
         }
       }
     }
+  }
+}
+
+@media (max-width: 1054px) {
+  .fixed-top {
+    margin: 15px 3% !important;
   }
 }
 

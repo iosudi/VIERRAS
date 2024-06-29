@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CartService } from '../../services/cart.service';
 import { WishlistService } from '../../services/wishlist.service';
@@ -11,10 +17,12 @@ import { WishlistService } from '../../services/wishlist.service';
 export class ClientNavComponent {
   @ViewChild('menu') menu!: ElementRef;
   @ViewChild('menuTrigger') menuTrigger!: ElementRef;
+  @ViewChild('navbar') navbar!: ElementRef;
   constructor(
     private _CartService: CartService,
     private _WishlistService: WishlistService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private renderer: Renderer2
   ) {}
 
   isSearchVisible: boolean = false;
@@ -88,6 +96,16 @@ export class ClientNavComponent {
       ) {
         this.hideMenu();
       }
+    }
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const offset = window.scrollY;
+    if (offset > 0) {
+      this.renderer.addClass(this.navbar.nativeElement, 'fixed-top');
+    } else {
+      this.renderer.removeClass(this.navbar.nativeElement, 'fixed-top');
     }
   }
 }

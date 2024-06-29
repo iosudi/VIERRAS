@@ -27,7 +27,7 @@ export class DiscountService {
         return totalPrice - discountValue;
       }
     } else {
-      return totalPrice;
+      return 0;
     }
   }
 }

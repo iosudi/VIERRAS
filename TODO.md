@@ -6,18 +6,14 @@ Project Description
 
 ### Todo
 
-- [ ] fixed navbar  
-- [ ] search  
 - [ ] multi currency  
+- [ ] search  
+- [ ] valid copun  
 
 ### In Progress
 
+- [ ] fixed navbar  
 
 ### Done ✓
 
-- [x] i18n  
-- [x] change shop layout  
-- [x] animations  
-- [x] move nav header to footer  
-- [x] solve cart problem  
 

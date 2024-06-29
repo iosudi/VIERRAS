@@ -1,4 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -14,6 +21,8 @@ import { VisibilityService } from '../../services/visibility.service';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
+  @ViewChild('filtersNav') filtersNav!: ElementRef;
+  @ViewChild('filtersContainer') filtersContainer!: ElementRef;
   constructor(
     private _ProductsService: ProductsService,
     private _CartService: CartService,
@@ -161,5 +170,29 @@ export class CategoriesComponent implements OnInit {
         this.isQuickViewVisible = data;
       },
     });
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const filtersNav = this.filtersNav.nativeElement;
+    const filtersContainer = this.filtersContainer.nativeElement;
+    const containerTop = filtersContainer.offsetTop;
+    const containerBottom = containerTop - 120 + filtersContainer.offsetHeight;
+    const scrollTop = window.scrollY;
+    const filtersNavHeight = filtersNav.offsetHeight;
+
+    if (
+      scrollTop > containerTop &&
+      scrollTop < containerBottom - filtersNavHeight
+    ) {
+      this.renderer.addClass(filtersNav, 'fixed');
+      this.renderer.removeClass(filtersNav, 'stop');
+    } else if (scrollTop >= containerBottom - filtersNavHeight) {
+      this.renderer.removeClass(filtersNav, 'fixed');
+      this.renderer.addClass(filtersNav, 'stop');
+    } else {
+      this.renderer.removeClass(filtersNav, 'fixed');
+      this.renderer.removeClass(filtersNav, 'stop');
+    }
   }
 }
