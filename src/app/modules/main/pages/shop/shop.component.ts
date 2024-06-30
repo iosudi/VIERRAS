@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { Category } from '../../interfaces/category';
@@ -30,11 +31,13 @@ export class ShopComponent implements OnInit {
     private _WishlistService: WishlistService,
     private renderer: Renderer2,
     private _VisibilityService: VisibilityService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
 
   categories: Category[] = [];
   products: Products[] = [];
+  exchangeRate: number = 0;
 
   pageSize: number = 0;
   currentPaginationPage: number = 1;
@@ -75,6 +78,15 @@ export class ShopComponent implements OnInit {
     this._WishlistService.getWishlist().subscribe({
       next: (res) => {
         this.wishListProducts = res.data.map((product: Products) => product.id);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this._ExchangeRateService.exChangeRate.subscribe({
+      next: (rate) => {
+        this.exchangeRate = rate;
       },
       error: (err) => {
         console.log(err);

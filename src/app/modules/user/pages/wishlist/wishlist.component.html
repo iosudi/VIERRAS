@@ -52,7 +52,7 @@
             >
               <h6 class="mb-0 fw-semibold">{{ product.title }}</h6>
               <p class="price fw-medium mb-0 fw-bold">
-                {{ product.price | currency : "E£" }}
+                {{ product.price | currencyExchange : exchangeRate }}
               </p>
             </div>
             <div class="rating">

@@ -12,6 +12,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { CoreModule } from 'src/app/core/core.module';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
@@ -49,6 +50,7 @@ import { ProductsService } from './services/products.service';
     NgxSpinnerModule,
     AnimateOnScrollModule,
     TranslateModule,
+    CoreModule,
   ],
 })
 export class MainModule {}

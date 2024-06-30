@@ -137,7 +137,7 @@
           ></i>
           <div class="cart-price mx-2">
             <h3 class="mb-0">{{ "navItems.CART" | translate }}</h3>
-            <p class="mb-0">{{ totalCartPrice + 50 | currency }}</p>
+            <p class="mb-0">{{ totalCartPrice  | currencyExchange : exchangeRate }}</p>
           </div>
         </span>
       </div>

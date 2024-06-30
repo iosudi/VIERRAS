@@ -106,7 +106,10 @@
                   </div>
                 </td>
                 <td class="fw-semibold product-total text-center py-4 fs-5">
-                  {{ product.price * product.count | currency : "E£" }}
+                  {{
+                    product.price * product.count
+                      | currencyExchange : exchangeRate
+                  }}
                 </td>
                 <td>
                   <div class="controllers">
@@ -157,7 +160,7 @@
               {{ "cart.summary.subtotal" | translate }}
             </h4>
             <h4 class="fw-semibold h5">
-              {{ cartPrice | currency : "E£" }}
+              {{ cartPrice | currencyExchange : exchangeRate }}
             </h4>
           </div>
           <div class="discount d-flex justify-content-between mb-2">
@@ -165,7 +168,7 @@
               {{ "cart.summary.discount" | translate }}
             </h4>
             <h5 class="fw-semibold h5 text-danger">
-              -{{ discountedPrice | currency : "E£" }}
+              -{{ discountedPrice | currencyExchange : exchangeRate }}
             </h5>
           </div>
 
@@ -173,7 +176,9 @@
             <h4 class="fw-semibold h5 text-capitalize">
               {{ "cart.summary.taxes" | translate }}
             </h4>
-            <h4 class="fw-semibold h5">{{ 50 | currency : "E£" }}</h4>
+            <h4 class="fw-semibold h5">
+              {{ 50 | currencyExchange : exchangeRate }}
+            </h4>
           </div>
           <div class="delivery-tax d-flex justify-content-between mb-2">
             <h4 class="fw-semibold h5 text-capitalize">
@@ -189,7 +194,9 @@
           <h4 class="fw-bold text-capitalize">
             {{ "cart.summary.total" | translate }}
           </h4>
-          <h4 class="fw-bold">{{ cartPrice + 50 | currency : "E£" }}</h4>
+          <h4 class="fw-bold">
+            {{ cartPrice + 50 | currencyExchange : exchangeRate }}
+          </h4>
         </div>
         <button
           class="primary-btn w-100 fw-bold"

@@ -70,7 +70,7 @@
                       {{ item.product.category.name }}
                     </p>
                     <p class="text-capitalize mb-0 fw-semibold">
-                      {{ item.price | currency : "E£"
+                      {{ item.price | currencyExchange : exchangeRate
                       }}<span>x{{ item.count }}</span>
                     </p>
                   </div>
@@ -81,7 +81,7 @@
 
           <div class="order-details d-flex justify-content-between">
             <p class="price mb-0 fw-semibold h5">
-              {{ order.totalOrderPrice | currency : "E£" }}
+              {{ order.totalOrderPrice | currencyExchange : exchangeRate }}
             </p>
             <p class="count mb-0 fw-semibold">
               ( {{ order.cartItems.length }} )

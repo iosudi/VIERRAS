@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
@@ -24,6 +25,7 @@ import { UserRoutingModule } from './user-routing.module';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    CoreModule,
   ],
 })
 export class UserModule {}

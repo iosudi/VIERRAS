@@ -6,6 +6,8 @@ import { BadgeModule } from 'primeng/badge';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DialogModule } from 'primeng/dialog';
 import { MegaMenuModule } from 'primeng/megamenu';
+import { CoreModule } from '../core/core.module';
+import { ExchangeRateService } from '../core/services/exchange-rate.service';
 import { DiscountService } from '../modules/user/services/discount.service';
 import { OrdersService } from '../modules/user/services/orders.service';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
@@ -20,7 +22,7 @@ import { PhoneNavComponent } from './components/phone-nav/phone-nav.component';
     FooterComponent,
     PhoneNavComponent,
   ],
-  providers: [OrdersService, DiscountService],
+  providers: [OrdersService, DiscountService, ExchangeRateService],
   imports: [
     CommonModule,
     MegaMenuModule,
@@ -29,6 +31,7 @@ import { PhoneNavComponent } from './components/phone-nav/phone-nav.component';
     NgxSpinnerModule,
     DialogModule,
     TranslateModule,
+    CoreModule,
   ],
   exports: [ClientNavComponent, FooterComponent, BreadCrumbComponent],
 })

@@ -8,6 +8,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { DiscountService } from '../../services/discount.service';
 
@@ -25,9 +26,12 @@ export class CartComponent implements OnInit {
     private _Renderer2: Renderer2,
     private toastr: ToastrService,
     private _DiscountService: DiscountService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
   cartProducts!: any;
+  exchangeRate: number = 0;
+
   cartPrice: number = 0;
   coupon: string = '';
   discountedPrice: number = 0;
@@ -38,15 +42,21 @@ export class CartComponent implements OnInit {
       duration: 1000,
     });
 
+    this._ExchangeRateService.exChangeRate.subscribe({
+      next: (rate) => {
+        this.exchangeRate = rate;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
     this.translate.use(this.currentLanguage);
 
     this._CartService.getCart().subscribe({
       next: (res) => {
         this.cartProducts = res.data;
-        this.cartPrice = this._DiscountService.applyDiscount(
-          res.data.totalCartPrice,
-          this.coupon
-        );
+        this.cartPrice = res.data.totalCartPrice;
       },
       error: (err) => {
         console.log(err);
@@ -118,12 +128,8 @@ export class CartComponent implements OnInit {
         this.cartPrice,
         this.coupon
       );
-      console.log(
-        '🚀 ~ CartComponent ~ applyCoupon ~ discountedPrice:',
-        discountedPrice
-      );
 
-      if (discountedPrice !== 0) {
+      if (discountedPrice !== -1) {
         this.cartPrice = this._DiscountService.applyDiscount(
           this.cartPrice,
           this.coupon

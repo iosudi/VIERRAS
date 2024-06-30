@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { CartService } from '../../services/cart.service';
 import { WishlistService } from '../../services/wishlist.service';
 
@@ -22,10 +23,12 @@ export class ClientNavComponent {
     private _CartService: CartService,
     private _WishlistService: WishlistService,
     public translate: TranslateService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
 
   isSearchVisible: boolean = false;
+  exchangeRate: number = 0;
 
   isMenuVisible: boolean = false;
   cartItems: number = 0;
@@ -67,6 +70,15 @@ export class ClientNavComponent {
     this._WishlistService.wishlistItems.subscribe({
       next: (data) => {
         this.wishlistItems = data;
+      },
+    });
+
+    this._ExchangeRateService.exChangeRate.subscribe({
+      next: (rate) => {
+        this.exchangeRate = rate;
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }

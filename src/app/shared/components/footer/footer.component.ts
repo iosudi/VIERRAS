@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,19 +12,21 @@ export class FooterComponent {
   @ViewChild('currencySelect') currencySelect!: ElementRef;
   constructor(
     private translate: TranslateService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
   expandAccountMenu: boolean = false;
   expandSocialMenu: boolean = false;
   expandCategoryMenu: boolean = false;
   currentLanguage!: string;
-
+  currentCurrency: string = localStorage.getItem('currentCurrency') || 'EGP';
   visible: boolean = false;
 
   ngOnInit(): void {
     this.toggleMenu('category');
     this.currentLanguage = localStorage.getItem('language') || 'en';
     this.renderer.addClass(document.body, this.currentLanguage);
+    this.getExchangeRate(this.currentCurrency);
   }
 
   toggleMenu(menu: string) {
@@ -63,7 +66,23 @@ export class FooterComponent {
       this.renderer.removeClass(body, 'en');
       this.renderer.addClass(body, 'ar');
     }
+    this.getExchangeRate(selectedCurrency);
 
     window.location.reload();
+  }
+
+  getExchangeRate(currency: string) {
+    localStorage.setItem('currentCurrency', currency);
+
+    this._ExchangeRateService.getExchangeRate().subscribe({
+      next: (data) => {
+        this._ExchangeRateService.exChangeRate.next(
+          data.conversion_rates[currency]
+        );
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }

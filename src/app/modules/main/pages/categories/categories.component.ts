@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { Category } from '../../interfaces/category';
@@ -31,7 +32,8 @@ export class CategoriesComponent implements OnInit {
     private _ActivatedRoute: ActivatedRoute,
     private renderer: Renderer2,
     private _VisibilityService: VisibilityService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
 
   categories: Category[] = [];
@@ -39,6 +41,7 @@ export class CategoriesComponent implements OnInit {
   activeCategoryName: string | undefined = '';
   products: Products[] = [];
   filteredProducts: Products[] = [];
+  exchangeRate: number = 0;
 
   pageSize: number = 0;
   currentPaginationPage: number = 1;
@@ -56,6 +59,15 @@ export class CategoriesComponent implements OnInit {
     this._ProductsService.getCategories().subscribe({
       next: (res) => {
         this.categories = res.data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this._ExchangeRateService.exChangeRate.subscribe({
+      next: (rate) => {
+        this.exchangeRate = rate;
       },
       error: (err) => {
         console.log(err);

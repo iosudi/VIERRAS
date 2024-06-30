@@ -173,7 +173,7 @@
                 >English</span
               >
               -
-              <span class="currency">USD</span>
+              <span class="currency">{{ currentCurrency }}</span>
             </div>
           </div>
         </div>
@@ -204,7 +204,7 @@
       <select class="form-select mt-1" #languageSelect>
         <option [selected]="currentLanguage == 'en'" value="en">English</option>
         <option [selected]="currentLanguage == 'ar'" value="ar">
-          اللغه العربيه
+          اللغة العربية
         </option>
       </select>
     </div>
@@ -213,8 +213,8 @@
         <i class="fa-solid fa-coins"></i> Currency
       </div>
       <select class="form-select mt-1" #currencySelect>
-        <option value="egp">EGP</option>
-        <option value="usd">USD</option>
+        <option [selected]="currentCurrency == 'EGP'" value="EGP">EGP</option>
+        <option [selected]="currentCurrency == 'USD'" value="USD">USD</option>
       </select>
     </div>
     <div class="buttons">

@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
+import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { slidesData } from 'src/assets/data/bannersData';
@@ -24,10 +25,12 @@ export class HomeComponent implements OnInit {
     private toastr: ToastrService,
     private _VisibilityService: VisibilityService,
     private renderer: Renderer2,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private _ExchangeRateService: ExchangeRateService
   ) {}
 
   slides: any = slidesData;
+  exchangeRate: number = 0;
   options: string[] = ["Men's Fashion", "Women's Fashion", 'Electronics'];
   selectedOption: string = this.options[0];
 
@@ -91,6 +94,15 @@ export class HomeComponent implements OnInit {
     this._WishlistService.getWishlist().subscribe({
       next: (res) => {
         this.wishListProducts = res.data.map((product: Products) => product.id);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this._ExchangeRateService.exChangeRate.subscribe({
+      next: (rate) => {
+        this.exchangeRate = rate;
       },
       error: (err) => {
         console.log(err);

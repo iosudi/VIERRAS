@@ -24,10 +24,11 @@ export class DiscountService {
         this.discountedPrice = totalPrice * (discountValue / 100);
         return totalPrice - totalPrice * (discountValue / 100);
       } else {
+        console.log('wassup');
         return totalPrice - discountValue;
       }
     } else {
-      return 0;
+      return -1;
     }
   }
 }

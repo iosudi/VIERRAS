@@ -150,7 +150,7 @@
                       </i>
                     </div>
                     <div class="price fw-medium">
-                      {{ product.price | currency : "E£" }}
+                      {{ product.price | currencyExchange : exchangeRate }}
                     </div>
                   </div>
                   <button
