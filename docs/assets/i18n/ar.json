@@ -277,7 +277,8 @@
         "title": "كتابة تقييم",
         "name": "الاسم",
         "email": "البريد الإلكتروني",
-        "reviewTitlePlaceHolder": "عنوان التقييم",
+        "reviewTitle": "عنوان التقييم",
+        "reviewBody": "محتوي التقييم",
         "submitButton": "إرسال التقييم"
       }
     },
