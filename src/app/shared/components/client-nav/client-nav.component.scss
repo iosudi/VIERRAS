@@ -68,7 +68,7 @@ app-phone-nav {
 .fixed-top {
   position: fixed;
   top: 0;
-  z-index: 1000; /* Ensure it stays on top */
+  z-index: 10; /* Ensure it stays on top */
   backdrop-filter: blur(25px);
   margin: 15px 10%;
   border: 1px solid var(--border-color) !important;
@@ -90,10 +90,10 @@ app-phone-nav {
 
   .search-field {
     position: relative;
+    width: 450px;
     margin-top: 100px;
     background: var(--secondary-color);
     height: fit-content;
-    width: 450px;
     button,
     input {
       background: transparent;
@@ -112,6 +112,24 @@ app-phone-nav {
       &:hover {
         transform: rotate(180deg);
       }
+    }
+  }
+
+  .search_container {
+    max-height: 0px;
+    overflow-y: auto;
+    transition: 0.5s;
+    .product-card {
+      width: 450px;
+      cursor: pointer;
+      .image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    &.show {
+      max-height: 500px;
     }
   }
 
@@ -188,12 +206,38 @@ app-phone-nav {
   }
 }
 
+@media (max-width: 518px) {
+  .search__overlay {
+    .search-field {
+      width: 350px;
+    }
+
+    .search_container {
+      .product-card {
+        width: 350px;
+      }
+    }
+  }
+}
+
 @media (max-width: 350px) {
   nav {
     .container-fluid {
       .nav-controllers {
         padding: 10px 20px;
         flex-direction: column;
+      }
+    }
+  }
+
+  .search__overlay {
+    .search-field {
+      width: 300px;
+    }
+
+    .search_container {
+      .product-card {
+        width: 300px;
       }
     }
   }

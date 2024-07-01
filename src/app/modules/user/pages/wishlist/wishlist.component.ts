@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import AOS from 'aos';
 import { ToastrService } from 'ngx-toastr';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
@@ -16,16 +17,19 @@ export class WishlistComponent implements OnInit {
     private _WishlistService: WishlistService,
     private _CartService: CartService,
     private toastr: ToastrService,
-    private _ExchangeRateService: ExchangeRateService
+    private _ExchangeRateService: ExchangeRateService,
+    public translate: TranslateService
   ) {}
 
   wishlistProducts: Products[] = [];
   exchangeRate: number = 0;
+  currentLanguage: string = localStorage.getItem('language') || 'en';
 
   ngOnInit(): void {
     AOS.init({
       duration: 1000,
     });
+    this.translate.use(this.currentLanguage);
 
     this._WishlistService.getWishlist().subscribe({
       next: (res) => {

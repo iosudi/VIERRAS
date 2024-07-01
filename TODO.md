@@ -6,14 +6,15 @@ Project Description
 
 ### Todo
 
-- [ ] multi currency  
-- [ ] search  
-- [ ] valid copun  
 
 ### In Progress
 
-- [ ] fixed navbar  
 
 ### Done ✓
 
+- [x] search  
+- [x] wishlist localization  
+- [x] fixed navbar  
+- [x] valid copun  
+- [x] multi currency  
 

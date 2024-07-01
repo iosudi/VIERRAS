@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BadgeModule } from 'primeng/badge';
@@ -14,6 +15,7 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
 import { ClientNavComponent } from './components/client-nav/client-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PhoneNavComponent } from './components/phone-nav/phone-nav.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { PhoneNavComponent } from './components/phone-nav/phone-nav.component';
     ClientNavComponent,
     FooterComponent,
     PhoneNavComponent,
+    SearchPipe,
   ],
   providers: [OrdersService, DiscountService, ExchangeRateService],
   imports: [
@@ -32,6 +35,7 @@ import { PhoneNavComponent } from './components/phone-nav/phone-nav.component';
     DialogModule,
     TranslateModule,
     CoreModule,
+    FormsModule,
   ],
   exports: [ClientNavComponent, FooterComponent, BreadCrumbComponent],
 })

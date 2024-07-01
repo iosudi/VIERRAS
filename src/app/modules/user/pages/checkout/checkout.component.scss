@@ -58,6 +58,13 @@
       }
     }
 
+    .order_total {
+      background-color: var(--blur-background);
+      .free {
+        color: var(--brand-color);
+      }
+    }
+
     .primary-btn {
       &:hover {
         background-color: transparent;

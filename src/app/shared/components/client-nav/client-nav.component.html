@@ -1,146 +1,208 @@
 <div
-  class="search__overlay d-flex justify-content-center px-2"
+  class="container-fluid search__overlay d-flex justify-content-center px-2"
   [class.active__search]="isSearchVisible"
 >
-  <div
-    class="search-field p-2 d-flex justify-content-between align-items-center gap-2 rounded-2"
-  >
-    <i class="fa-solid fa-x close-btn" (click)="hideSearch()"></i>
-    <input type="text" class="w-100" placeholder="What are you looking for?" />
-    <button type="submit">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-  </div>
-</div>
-
-<app-phone-nav></app-phone-nav>
-
-<nav class="border-bottom" [dir]="'dir' | translate" #navbar>
-  <div class="container-fluid">
+  <div class="d-flex flex-column">
     <div
-      class="nav-controllers px-6 py-3 d-flex justify-content-between align-items-center gap-5"
+      class="search-field mx-auto p-2 d-flex justify-content-between align-items-center gap-2 rounded-2 mb-4"
     >
-      <div class="d-flex justify-content-between align-items-center gap-5">
-        <h1
-          class="h2 logo mb-0 fw-normal headings-font fw-bold"
-          routerLink="/home"
-          role="button"
-        >
-          VIERRAS
-        </h1>
-        <ul class="nav-items d-flex gap-4 mb-0 p-0 nav-links">
-          <li>
-            <a
-              routerLink="/home"
-              routerLinkActive="active_link"
-              class="text-uppercase fw-medium"
-              >{{ "navItems.HOME" | translate }}</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/shop"
-              routerLinkActive="active_link"
-              class="text-uppercase fw-medium"
-              >{{ "navItems.SHOP" | translate }}</a
-            >
-          </li>
-          <li>
-            <a
-              class="mb-0 fw-medium text-uppercase position-relative"
-              role="button"
-              (click)="toggleMenu()"
-              #menuTrigger
-            >
-              {{ "navItems.CATEGORIES" | translate }}
-              <i class="fa-solid fa-chevron-down"></i>
-            </a>
-            <div class="mega-menu p-4 mt-3" *ngIf="isMenuVisible" #menu>
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <h4 class="h5 title">
-                    {{ "navItems.megaMenu.menFashion" | translate }}
-                  </h4>
-                  <ul class="m-0 p-0">
-                    <li>{{ "navItems.megaMenu.clothing" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.shoes" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.accessories" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.bags" | translate }}</li>
-                  </ul>
-                </div>
+      <i class="fa-solid fa-x close-btn" (click)="hideSearch()"></i>
+      <input
+        [(ngModel)]="searchTerm"
+        type="text"
+        class="w-100"
+        placeholder="What are you looking for?"
+      />
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
 
-                <div class="col-md-4">
-                  <h4 class="h5 title">
-                    {{ "navItems.megaMenu.womenFashion" | translate }}
-                  </h4>
-                  <ul class="m-0 p-0">
-                    <li>{{ "navItems.megaMenu.clothing" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.shoes" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.accessories" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.bags" | translate }}</li>
-                  </ul>
-                </div>
-
-                <div class="col-md-4">
-                  <h4 class="h5 title">
-                    {{ "navItems.megaMenu.electronics" | translate }}
-                  </h4>
-                  <ul class="m-0 p-0">
-                    <li>{{ "navItems.megaMenu.laptop" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.pc" | translate }}</li>
-                    <li>{{ "navItems.megaMenu.mobile" | translate }}</li>
-                  </ul>
-                </div>
+    <div class="search_container container" [class.show]="searchTerm !== ''">
+      <div class="row">
+        <div class="col-12">
+          <div
+            class="product-card shadow-sm p-3 mb-2 bg-white rounded d-flex gap-2"
+            *ngFor="let product of products | search : searchTerm"
+            [routerLink]="['/product-details', product.id]"
+          >
+            <div class="image">
+              <img [src]="product.images[0]" alt="{{ product.title }}" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title mb-0">
+                {{ product.title }}
+              </h5>
+              <div
+                class="d-flex justify-content-between align-items-center gap-1"
+              >
+                <span class="price">
+                  {{ product.price | currencyExchange : exchangeRate }}
+                </span>
+                <button type="button" class="btn btn-sm"></button>
               </div>
             </div>
-          </li>
-          <li>
-            <a
-              routerLink="/blog"
-              routerLinkActive="active_link"
-              class="text-uppercase fw-medium"
-              >{{ "navItems.BLOG" | translate }}</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/contact"
-              routerLinkActive="active_link"
-              class="text-uppercase fw-medium"
-              >{{ "navItems.CONTACT" | translate }}</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <div class="controls d-flex gap-3 align-items-center">
-        <span>
-          <i
-            role="button"
-            class="fa-solid fa-magnifying-glass"
-            (click)="showSearch()"
-          ></i>
-        </span>
-        <span role="button" routerLink="/account">
-          <i class="fa-regular fa-user"></i>
-        </span>
-        <span role="button" routerLink="/wishlist">
-          <i class="fa-regular fa-heart" pBadge [value]="wishlistItems"></i>
-        </span>
-        <span class="d-flex align-items-center gap-2">
-          <i
-            role="button"
-            class="fa-solid fa-shopping-bag"
-            routerLink="/cart"
-            pBadge
-            [value]="cartItems"
-          ></i>
-          <div class="cart-price mx-2">
-            <h3 class="mb-0">{{ "navItems.CART" | translate }}</h3>
-            <p class="mb-0">{{ totalCartPrice  | currencyExchange : exchangeRate }}</p>
           </div>
-        </span>
+        </div>
       </div>
     </div>
   </div>
-</nav>
+</div>
+
+<main>
+  <app-phone-nav></app-phone-nav>
+
+  <nav class="border-bottom" [dir]="'dir' | translate" #navbar>
+    <div class="container-fluid">
+      <div
+        class="nav-controllers px-6 py-3 d-flex justify-content-between align-items-center gap-5"
+      >
+        <div class="d-flex justify-content-between align-items-center gap-5">
+          <h1
+            class="h2 logo mb-0 fw-normal headings-font fw-bold"
+            routerLink="/home"
+            role="button"
+          >
+            VIERRAS
+          </h1>
+          <ul class="nav-items d-flex gap-4 mb-0 p-0 nav-links">
+            <li>
+              <a
+                routerLink="/home"
+                routerLinkActive="active_link"
+                class="text-uppercase fw-medium"
+                >{{ "navItems.HOME" | translate }}</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/shop"
+                routerLinkActive="active_link"
+                class="text-uppercase fw-medium"
+                >{{ "navItems.SHOP" | translate }}</a
+              >
+            </li>
+            <li>
+              <a
+                class="mb-0 fw-medium text-uppercase position-relative"
+                role="button"
+                (click)="toggleMenu()"
+                #menuTrigger
+              >
+                {{ "navItems.CATEGORIES" | translate }}
+                <i class="fa-solid fa-chevron-down"></i>
+              </a>
+              <div class="mega-menu p-4 mt-3" *ngIf="isMenuVisible" #menu>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <h4 class="h5 title">
+                      {{ "navItems.megaMenu.menFashion" | translate }}
+                    </h4>
+                    <ul class="m-0 p-0">
+                      <li>
+                        {{ "navItems.megaMenu.clothing" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.shoes" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.accessories" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.bags" | translate }}
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-md-4">
+                    <h4 class="h5 title">
+                      {{ "navItems.megaMenu.womenFashion" | translate }}
+                    </h4>
+                    <ul class="m-0 p-0">
+                      <li>
+                        {{ "navItems.megaMenu.clothing" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.shoes" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.accessories" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.bags" | translate }}
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-md-4">
+                    <h4 class="h5 title">
+                      {{ "navItems.megaMenu.electronics" | translate }}
+                    </h4>
+                    <ul class="m-0 p-0">
+                      <li>
+                        {{ "navItems.megaMenu.laptop" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.pc" | translate }}
+                      </li>
+                      <li>
+                        {{ "navItems.megaMenu.mobile" | translate }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                routerLink="/blog"
+                routerLinkActive="active_link"
+                class="text-uppercase fw-medium"
+                >{{ "navItems.BLOG" | translate }}</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/contact"
+                routerLinkActive="active_link"
+                class="text-uppercase fw-medium"
+                >{{ "navItems.CONTACT" | translate }}</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="controls d-flex gap-3 align-items-center">
+          <span>
+            <i
+              role="button"
+              class="fa-solid fa-magnifying-glass"
+              (click)="showSearch()"
+            ></i>
+          </span>
+          <span role="button" routerLink="/account">
+            <i class="fa-regular fa-user"></i>
+          </span>
+          <span role="button" routerLink="/wishlist">
+            <i class="fa-regular fa-heart" pBadge [value]="wishlistItems"></i>
+          </span>
+          <span class="d-flex align-items-center gap-2">
+            <i
+              role="button"
+              class="fa-solid fa-shopping-bag"
+              routerLink="/cart"
+              pBadge
+              [value]="cartItems"
+            ></i>
+            <div class="cart-price mx-2">
+              <h3 class="mb-0">{{ "navItems.CART" | translate }}</h3>
+              <p class="mb-0">
+                {{ totalCartPrice | currencyExchange : exchangeRate }}
+              </p>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</main>

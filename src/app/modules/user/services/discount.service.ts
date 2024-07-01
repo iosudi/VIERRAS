@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { DiscountCode } from 'src/app/shared/interfaces/discount-code';
 import { discountCode } from './../../../../assets/data/discountCodes';
 
@@ -7,7 +8,7 @@ import { discountCode } from './../../../../assets/data/discountCodes';
 })
 export class DiscountService {
   coupons: DiscountCode[] = discountCode;
-  discountedPrice: number = 0;
+  discountedPrice: BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor() {}
 
@@ -21,7 +22,7 @@ export class DiscountService {
 
     if (discountValue !== null) {
       if (discountValue <= 100) {
-        this.discountedPrice = totalPrice * (discountValue / 100);
+        this.discountedPrice.next(totalPrice * (discountValue / 100));
         return totalPrice - totalPrice * (discountValue / 100);
       } else {
         console.log('wassup');

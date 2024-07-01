@@ -16,8 +16,8 @@
       "bags": "حقائب",
       "womenFashion": "موضة النساء",
       "electronics": "إلكترونيات",
-      "laptop": "حاسوب محمول",
-      "pc": "حاسوب مكتبي",
+      "laptop": "لابتوب",
+      "pc": "كمبيوتر",
       "mobile": "جوال"
     }
   },
@@ -104,6 +104,43 @@
       "deliveryHandling": "التوصيل والتعامل المقدر",
       "free": "مجانا",
       "total": "الإجمالي"
+    }
+  },
+
+  "checkout": {
+    "billingDetails": "تفاصيل الفاتورة",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "address": "العنوان",
+    "addressPlaceholder": "عنوانك",
+    "city": "المدينة",
+    "cityPlaceholder": "اسم المدينة (مثل، الجيزة، القاهرة)",
+    "governorate": "المحافظة",
+    "postalCode": "الرمز البريدي",
+    "postalCodePlaceholder": "الرمز البريدي (اختياري)",
+    "phoneNumber": "رقم الهاتف",
+    "phoneNumberPlaceholder": "مثل 01122334455",
+    "yourOrder": "طلبك",
+    "subtotal": "المجموع الفرعي",
+    "estimatedDelivery": "التوصيل المقدر",
+    "estimatedTaxes": "الضرائب المقدرة",
+    "total": "المجموع الكلي",
+    "checkoutNow": "الدفع الآن",
+    "freeDelivery": "مجاني",
+    "addressRequired": "العنوان مطلوب",
+    "cityRequired": "المدينة مطلوبة",
+    "phoneNumberRequired": "رقم الهاتف مطلوب",
+    "phoneNumberPattern": "يجب أن يكون رقم الهاتف مصريًا، مثل 01123456789"
+  },
+
+  "wishlist": {
+    "heading": {
+      "title": "قائمة الرغبات الخاصة بك",
+      "subtitle": "لديك ",
+      "subtitle2": "  عناصر في قائمة الرغبات الخاصة بك"
+    },
+    "buttons": {
+      "addToCart": "أضف إلى السلة"
     }
   },
 

@@ -144,7 +144,14 @@ export class CartComponent implements OnInit {
           'disabled',
           'true'
         );
-        this.discountedPrice = this._DiscountService.discountedPrice;
+        this._DiscountService.discountedPrice.subscribe({
+          next: (price) => {
+            this.discountedPrice = price;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
         this.toastr.success('Coupon applied successfully.');
       }
     }

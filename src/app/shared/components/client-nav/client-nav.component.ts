@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
+import { Products } from 'src/app/modules/main/interfaces/products';
+import { ProductsService } from 'src/app/modules/main/services/products.service';
 import { CartService } from '../../services/cart.service';
 import { WishlistService } from '../../services/wishlist.service';
 
@@ -24,11 +26,15 @@ export class ClientNavComponent {
     private _WishlistService: WishlistService,
     public translate: TranslateService,
     private renderer: Renderer2,
-    private _ExchangeRateService: ExchangeRateService
+    private _ExchangeRateService: ExchangeRateService,
+    private _ProductsService: ProductsService
   ) {}
 
   isSearchVisible: boolean = false;
   exchangeRate: number = 0;
+
+  searchTerm: string = '';
+  products: Products[] = [];
 
   isMenuVisible: boolean = false;
   cartItems: number = 0;
@@ -81,6 +87,15 @@ export class ClientNavComponent {
         console.log(err);
       },
     });
+
+    this._ProductsService.getAllProducts().subscribe({
+      next: (res) => {
+        this.products = res.data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   toggleMenu(): void {
@@ -93,10 +108,12 @@ export class ClientNavComponent {
 
   showSearch(): void {
     this.isSearchVisible = true;
+    this.renderer.addClass(document.body, 'no-scroll');
   }
 
   hideSearch(): void {
     this.isSearchVisible = false;
+    this.renderer.removeClass(document.body, 'no-scroll');
   }
 
   @HostListener('document:click', ['$event'])

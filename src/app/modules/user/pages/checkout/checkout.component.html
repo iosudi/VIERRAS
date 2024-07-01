@@ -1,5 +1,5 @@
 <app-client-nav></app-client-nav>
-<div class="checkout__box mt-5">
+<div class="checkout__box mt-5" [dir]="'dir' | translate">
   <div class="container">
     <div class="bread_crumb px-md-4 px-sm-0 py-3">
       <app-bread-crumb></app-bread-crumb>
@@ -8,7 +8,7 @@
       <div class="col-lg-8">
         <div class="billing__box px-5">
           <h3 class="text-capitalize mb-0 fw-bolder headings-font">
-            billing details
+            {{ "checkout.billingDetails" | translate }}
           </h3>
 
           <form
@@ -17,21 +17,21 @@
           >
             <div class="full__name d-flex gap-4">
               <div class="input-group d-flex flex-column d-flex flex-column">
-                <label>First Name</label>
+                <label> {{ "checkout.firstName" | translate }} </label>
                 <input type="text" class="w-100" placeholder="John" />
               </div>
               <div class="input-group d-flex flex-column">
-                <label>Last Name</label>
+                <label>{{ "checkout.lastName" | translate }}</label>
                 <input type="text" class="w-100" placeholder="Doe" />
               </div>
             </div>
 
             <div class="input-group d-flex flex-column">
-              <label>Address *</label>
+              <label>{{ "checkout.address" | translate }} *</label>
               <input
                 type="text"
                 class="w-100"
-                placeholder="Your address"
+                [placeholder]="'checkout.addressPlaceholder' | translate"
                 formControlName="details"
               />
               <div
@@ -45,18 +45,18 @@
                   class="mb-0 px-2 text-danger"
                   *ngIf="billingAddress.get('details')?.getError('required')"
                 >
-                  Address is required
+                  {{ "checkout.addressRequired" | translate }}
                 </p>
               </div>
             </div>
 
             <div class="city__details d-flex gap-4">
               <div class="input-group d-flex flex-column">
-                <label>City *</label>
+                <label>{{ "checkout.city" | translate }} *</label>
                 <input
                   type="text"
                   class="w-100"
-                  placeholder="City name (e.g, Giza, Cairo)"
+                  [placeholder]="'checkout.cityPlaceholder' | translate"
                   formControlName="city"
                 />
                 <div
@@ -70,12 +70,12 @@
                     class="mb-0 px-2 text-danger"
                     *ngIf="billingAddress.get('city')?.getError('required')"
                   >
-                    City is required
+                    {{ "checkout.cityRequired" | translate }}
                   </p>
                 </div>
               </div>
               <div class="input-group d-flex flex-column">
-                <label>Governorate</label>
+                <label>{{ "checkout.governorate" | translate }}</label>
                 <select class="w-100">
                   <option
                     *ngFor="let governorate of governorates"
@@ -86,17 +86,17 @@
                 </select>
               </div>
               <div class="input-group d-flex flex-column">
-                <label>Postal code</label>
+                <label>{{ "checkout.postalCode" | translate }}</label>
                 <input
                   type="text"
                   class="w-100"
-                  placeholder="Postal code (optional)"
+                  [placeholder]="'checkout.postalCodePlaceholder' | translate"
                 />
               </div>
             </div>
 
             <div class="input-group d-flex flex-column">
-              <label>Phone number *</label>
+              <label>{{ "checkout.phoneNumber" | translate }} *</label>
               <input
                 type="text"
                 class="w-100"
@@ -114,13 +114,13 @@
                   class="mb-0 px-2 text-danger"
                   *ngIf="billingAddress.get('phone')?.getError('required')"
                 >
-                  Phone number is required
+                  {{ "checkout.phoneNumberRequired" | translate }}
                 </p>
                 <p
                   class="mb-0 px-2 text-danger"
                   *ngIf="billingAddress.get('phone')?.getError('pattern')"
                 >
-                  Phone number must be Egyptian, e.g 01123456789
+                  {{ "checkout.phoneNumberPattern" | translate }}
                 </p>
               </div>
             </div>
@@ -129,8 +129,8 @@
       </div>
       <div class="col-lg-4">
         <div class="order__summary p-3">
-          <h4 class="text-capitalize mb-0 border-bottom pb-4 fw-bolder h5">
-            your order
+          <h4 class="text-capitalize mb-0 border-bottom pb-4 fw-bolder">
+            {{ "checkout.yourOrder" | translate }}
           </h4>
           <div class="order__details">
             <div class="order__products">
@@ -151,42 +151,69 @@
                   </h4>
                   <div class="product__price">
                     <p class="mb-0">
-                      {{ product.price | currency : "E£" }}
+                      {{ product.price | currencyExchange : exchangeRate }}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="order_total my-3">
+            <div class="order_total p-3 my-3 rounded-3">
               <div class="subTotal d-flex justify-content-between mb-2">
-                <h4 class="fw-semibold h6">Subtotal</h4>
                 <h4 class="fw-semibold h6">
-                  {{ cartPrice | currency : "E£" }}
+                  {{ "checkout.subtotal" | translate }}
+                </h4>
+                <h4 class="fw-semibold h6">
+                  {{
+                    cartPrice - discountedPrice
+                      | currencyExchange : exchangeRate
+                  }}
                 </h4>
               </div>
-              <div class="delivery-tax d-flex justify-content-between mb-2">
+
+              <div class="discount d-flex justify-content-between mb-2">
                 <h4 class="fw-semibold h6 text-capitalize">
-                  Estimated delivery
+                  {{ "cart.summary.discount" | translate }}
                 </h4>
-                <h4 class="fw-semibold h6">Free</h4>
+                <h5 class="fw-semibold h6 text-danger">
+                  -{{ discountedPrice | currencyExchange : exchangeRate }}
+                </h5>
               </div>
+
+              <div class="taxes d-flex justify-content-between mb-2">
+                <h4 class="fw-semibold h6 text-capitalize">
+                  {{ "checkout.estimatedTaxes" | translate }}
+                </h4>
+                <h4 class="fw-semibold h6">
+                  {{ 50 | currencyExchange : exchangeRate }}
+                </h4>
+              </div>
+
               <div
-                class="taxes d-flex justify-content-between mb-2 border-bottom"
+                class="delivery-tax d-flex justify-content-between mb-2 border-bottom"
               >
-                <h4 class="fw-semibold h6 text-capitalize">Estimated taxes</h4>
-                <h4 class="fw-semibold h6">{{ 50 | currency : "E£" }}</h4>
+                <h4 class="fw-semibold h6 text-capitalize">
+                  {{ "checkout.estimatedDelivery" | translate }}
+                </h4>
+                <h4 class="fw-semibold h6 free">
+                  {{ "checkout.freeDelivery" | translate }}
+                </h4>
               </div>
+
               <div class="total-price d-flex justify-content-between my-4">
-                <h4 class="fw-bold text-capitalize">Total</h4>
-                <h4 class="fw-bold">{{ cartPrice + 50 | currency : "E£" }}</h4>
+                <h4 class="fw-bold text-capitalize">
+                  {{ "checkout.total" | translate }}
+                </h4>
+                <h4 class="fw-bold">
+                  {{ cartPrice + 50 | currencyExchange : exchangeRate }}
+                </h4>
               </div>
               <button
                 type="submit"
                 class="primary-btn w-100 fw-bold"
                 (click)="checkout()"
               >
-                Checkout Now
+                {{ "checkout.checkoutNow" | translate }}
               </button>
             </div>
           </div>

@@ -106,6 +106,44 @@
     }
   },
 
+  "checkout": {
+    "billingDetails": "Billing Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address": "Address",
+    "addressPlaceholder": "Your address",
+    "city": "City",
+    "cityPlaceholder": "City name (e.g, Giza, Cairo)",
+    "governorate": "Governorate",
+    "postalCode": "Postal Code",
+    "postalCodePlaceholder": "Postal code (optional)",
+    "phoneNumber": "Phone Number",
+    "phoneNumberPlaceholder": "e.g 01122334455",
+    "yourOrder": "Your Order",
+    "subtotal": "Subtotal",
+    "estimatedDelivery": "Estimated Delivery",
+    "estimatedTaxes": "Estimated Taxes",
+    "total": "Total",
+    "checkoutNow": "Checkout Now",
+    "freeDelivery": "Free",
+    "submitOrder": "Submit Order",
+    "addressRequired": "Address is required",
+    "cityRequired": "City is required",
+    "phoneNumberRequired": "Phone number is required",
+    "phoneNumberPattern": "Phone number must be Egyptian, e.g 01123456789"
+  },
+
+  "wishlist": {
+    "heading": {
+      "title": "Your wishlist",
+      "subtitle": "You have ",
+      "subtitle2": " items in your wishlist "
+    },
+    "buttons": {
+      "addToCart": "Add to Cart"
+    }
+  },
+
   "shopPage": {
     "mainTitle": "Shop",
     "categoriesFilter": {
