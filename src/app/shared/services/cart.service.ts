@@ -55,7 +55,7 @@ export class CartService {
   checkout(cartId: string, billingDetails: object): Observable<any> {
     return this._HttpClient.post(
       environment.baseURL +
-        `api/v1/orders/checkout-session/${cartId}?url=https://iosudi.github.io/VIERRAS_`,
+        `api/v1/orders/checkout-session/${cartId}?url=https://iosudi.github.io/VIERRAS`,
       { shippingAddress: billingDetails },
       {
         headers: this.headers,
